@@ -6,7 +6,6 @@
 
 QT       += core gui
 QT       += sql
-
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
 TARGET = Software-Engineering
@@ -29,6 +28,7 @@ SOURCES += main.cpp\
     custombutton.cpp
 
 HEADERS  += mainwindow.h \
-    custombutton.h
+    custombutton.h \
+    database.h
 
 FORMS    += mainwindow.ui

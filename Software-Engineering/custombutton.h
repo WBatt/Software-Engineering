@@ -1,6 +1,6 @@
 #ifndef CUSTOMBUTTON_H
 #define CUSTOMBUTTON_H
-#include <QtUiTools/QtUiTools>
+//#include <QtUiTools/QtUiTools>
 #include <QPushButton>
 class CustomButton : public QPushButton
 {

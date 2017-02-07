@@ -1,18 +1,38 @@
 #include "mainwindow.h"
 #include <QApplication>
 #include <QSqlDatabase>
+#include <QSqlQuery>
+#include <QDebug>
+#include <database.h>
+
+using namespace std;
 
 int main(int argc, char *argv[])
 {
     QSqlDatabase db = QSqlDatabase::addDatabase("QMYSQL");
-    db.setHostName("www.mikebobadilla.com");
-    db.setDatabaseName("cs441");
-    db.setUserName("cs441");
-    db.setPassword("HwhW4QWYHjV7tTkX");
-    bool ok = db.open();
-    QApplication a(argc, argv);
-    MainWindow w;
-    w.show();
+    db.setHostName(hostname);
+    db.setDatabaseName(name);
+    db.setUserName(username);
+    db.setPassword(password);
+   if (!db.open())
+   {
+      printf("didnt work");
+   }
 
-    return a.exec();
+   qDebug() << QSqlDatabase::drivers();
+
+   QSqlQuery query;
+   query.exec("select * from users");
+
+   while(query.next()){
+
+       QString name = query.value(1).toString();
+       qDebug() << name;
+   }
+   //QApplication a(argc, argv);
+   //MainWindow w;
+   //w.show();
+
+   //return a.exec();
+   return 0;
 }
