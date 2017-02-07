@@ -14,7 +14,7 @@
    <string>MainWindow</string>
   </property>
   <widget class="QWidget" name="centralWidget">
-   <widget class="CustomButton" name="pushButton">
+   <widget class="CustomButton" name="changeName">
     <property name="geometry">
      <rect>
       <x>140</x>
@@ -34,7 +34,7 @@
      <x>0</x>
      <y>0</y>
      <width>400</width>
-     <height>21</height>
+     <height>22</height>
     </rect>
    </property>
   </widget>

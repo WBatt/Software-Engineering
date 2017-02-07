@@ -8,9 +8,8 @@ class CustomButton : public QPushButton
 public:
     CustomButton(QWidget *parent = 0);
 public slots:
-
-
     void changeName();
+    void doSometihngelse();
 private:
 
 };
