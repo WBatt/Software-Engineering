@@ -5,10 +5,14 @@
 #include <QDebug>
 #include <database.h>
 
+#include <QtCore/QCoreApplication>
+
 using namespace std;
+
 
 int main(int argc, char *argv[])
 {
+    QApplication a(argc, argv);
     QSqlDatabase db = QSqlDatabase::addDatabase("QMYSQL");
     db.setHostName(hostname);
     db.setDatabaseName(name);
@@ -18,8 +22,6 @@ int main(int argc, char *argv[])
    {
       printf("didnt work");
    }
-
-   qDebug() << QSqlDatabase::drivers();
 
    QSqlQuery query;
    query.exec("select * from users");
