@@ -31,10 +31,9 @@ int main(int argc, char *argv[])
        QString name = query.value(1).toString();
        qDebug() << name;
    }
-   //QApplication a(argc, argv);
-   //MainWindow w;
-   //w.show();
+   MainWindow w;
+   w.show();
 
-   //return a.exec();
+   return a.exec();
    return 0;
 }
