@@ -19,6 +19,7 @@ public:
 private slots:
     void on_pushButton_clicked();
 
+<<<<<<< HEAD
     void on_pushButton_Login_clicked();
 
     void on_pushButton_3_clicked();
@@ -37,6 +38,8 @@ private slots:
 
     void on_pushButton_CancelCreateAccount_clicked();
 
+=======
+>>>>>>> f39330dc4d818435996488afe0a5fd7087f964e5
 private:
     Ui::MainWindow *ui;
     CreateAccount *acct_page;
