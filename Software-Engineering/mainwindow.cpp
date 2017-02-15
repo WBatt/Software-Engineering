@@ -17,7 +17,6 @@ void MainWindow::on_pushButton_clicked()
 {
     ui->stackedWidget->setCurrentIndex(1);
 }
-<<<<<<< HEAD
 
 
 
@@ -56,5 +55,3 @@ void MainWindow::on_pushButton_CancelCreateAccount_clicked()
 {
     ui->stackedWidget->setCurrentIndex(0);
 }
-=======
->>>>>>> f39330dc4d818435996488afe0a5fd7087f964e5
