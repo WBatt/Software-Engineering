@@ -33,6 +33,10 @@ private slots:
 
     void on_pushButton_CancelCreateAccount_clicked();
 
+    void on_PushPass_clicked();
+
+    void on_cancel_forget_clicked();
+
 private:
     Ui::MainWindow *ui;
     CreateAccount *acct_page;
