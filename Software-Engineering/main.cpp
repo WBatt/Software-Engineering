@@ -6,6 +6,7 @@
 #include <QNetworkReply>
 #include <QUrl>
 #include <QUrlQuery>
+#include <QJsonDocument>
 
 #include <QtCore/QCoreApplication>
 
@@ -32,13 +33,14 @@ void sendRequest()
     QNetworkAccessManager manager;
     QObject::connect(&manager, SIGNAL(finished(QNetworkReply*)), &eventLoop, SLOT(quit()));
 
-    QNetworkRequest req(QUrl(QString("https://jsonplaceholder.typicode.com/posts")));
+    QNetworkRequest req(QUrl(QString("https://jsonplaceholder.typicode.com/posts/1")));
     QNetworkReply *reply = manager.get(req);
     eventLoop.exec();
 
     if (reply->error() == QNetworkReply::NoError){
-        qDebug() << "Success";
-        //qDebug() << "Success " reply->readAll();
+        //qDebug() << "Success";
+        QJsonObject json_obj = QJsonDocument::fromJson(reply->readAll()).object();
+        qDebug() << "Success " << json_obj["body"].toString();
         delete reply;
     } else {
         qDebug() << "Error ";
