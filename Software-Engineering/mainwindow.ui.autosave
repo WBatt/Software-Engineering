@@ -68,7 +68,7 @@ QLabel
        <string notr="true"/>
       </property>
       <property name="currentIndex">
-       <number>2</number>
+       <number>1</number>
       </property>
       <widget class="QWidget" name="page_3">
        <widget class="QPushButton" name="pushButton">
@@ -235,7 +235,7 @@ QLabel
              <item>
               <layout class="QHBoxLayout" name="horizontalLayout_3">
                <item>
-                <widget class="QPushButton" name="pushButton_2">
+                <widget class="QPushButton" name="pushButton_register">
                  <property name="minimumSize">
                   <size>
                    <width>0</width>
@@ -266,7 +266,7 @@ QLabel
                 </spacer>
                </item>
                <item>
-                <widget class="QPushButton" name="pushButton_3">
+                <widget class="QPushButton" name="pushButton_cancel">
                  <property name="minimumSize">
                   <size>
                    <width>0</width>
