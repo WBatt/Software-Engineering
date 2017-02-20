@@ -36,6 +36,8 @@ private slots:
 
     void on_cancel_forget_clicked();
 
+    void on_pushButton_3_clicked();
+    
 private:
     Ui::MainWindow *ui;
 };

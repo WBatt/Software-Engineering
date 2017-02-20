@@ -18,7 +18,7 @@
 {
 	background: qlineargradient(spread:pad, x1:0.482955, y1:1, x2:0.471591, y2:0, stop:0 rgba(120, 173, 237, 255), stop:1 rgba(31, 44, 60, 255));
 	
-	background: qradialgradient(spread:pad, cx:0.5, cy:0.5, radius:0.5, fx:0.5, fy:0.5, stop:0 rgba(82, 135, 198, 255), stop:1 rgba(56, 96, 143, 255))
+        background: qradialgradient(spread:pad, cx:0.5, cy:0.5, radius:0.5, fx:0.5, fy:0.5, stop:0 rgba(82, 135, 198, 255), stop:1 rgba(56, 96, 143, 255))
 }
 
 QPushButton
@@ -68,11 +68,10 @@ QLabel
        <string notr="true"/>
       </property>
       <property name="currentIndex">
-<<<<<<< Updated upstream
+
        <number>2</number>
-=======
-       <number>3</number>
->>>>>>> Stashed changes
+
+
       </property>
       <widget class="QWidget" name="page_3">
        <widget class="QPushButton" name="pushButton">
