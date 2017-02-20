@@ -25,13 +25,13 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 SOURCES += main.cpp\
         mainwindow.cpp \
-    custombutton.cpp \
-    createaccount.cpp
+    custombutton.cpp
 
 HEADERS  += mainwindow.h \
     custombutton.h \
-    database.h \
-    createaccount.h
+    database.h
 
-FORMS    += mainwindow.ui \
-    createaccount.ui
+FORMS    += mainwindow.ui
+
+RESOURCES += \
+    resources.qrc

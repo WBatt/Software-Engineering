@@ -1,0 +1,5 @@
+<RCC>
+    <qresource prefix="/images">
+        <file>Food_logo.png</file>
+    </qresource>
+</RCC>
