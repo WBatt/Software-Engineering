@@ -60,7 +60,6 @@ QLabel
 }</string>
   </property>
   <widget class="QWidget" name="centralWidget">
-<<<<<<< HEAD
    <layout class="QVBoxLayout" name="verticalLayout_2">
     <item>
      <widget class="QStackedWidget" name="stackedWidget">
