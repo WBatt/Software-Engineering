@@ -68,23 +68,8 @@ QLabel
        <string notr="true"/>
       </property>
       <property name="currentIndex">
-       <number>4</number>
+       <number>1</number>
       </property>
-      <widget class="QWidget" name="page_3">
-       <widget class="QPushButton" name="pushButton">
-        <property name="geometry">
-         <rect>
-          <x>339</x>
-          <y>235</y>
-          <width>131</width>
-          <height>41</height>
-         </rect>
-        </property>
-        <property name="text">
-         <string>Create Account</string>
-        </property>
-       </widget>
-      </widget>
       <widget class="QWidget" name="page_CreateAcct">
        <layout class="QVBoxLayout" name="verticalLayout">
         <item>
@@ -336,6 +321,7 @@ QLabel
         </item>
        </layout>
       </widget>
+      <widget class="QWidget" name="page_Login"/>
       <widget class="QWidget" name="Home">
        <layout class="QGridLayout" name="gridLayout_4">
         <item row="1" column="1">
@@ -599,7 +585,7 @@ QLabel
      <x>0</x>
      <y>0</y>
      <width>800</width>
-     <height>22</height>
+     <height>17</height>
     </rect>
    </property>
   </widget>
