@@ -35,5 +35,7 @@ HEADERS  += mainwindow.h \
     createaccount.h \
     app.h
 
-FORMS    += mainwindow.ui \
-    createaccount.ui
+FORMS    += mainwindow.ui
+
+RESOURCES += \
+    resources.qrc

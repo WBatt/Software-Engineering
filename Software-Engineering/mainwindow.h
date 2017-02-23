@@ -2,7 +2,6 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
-#include "createaccount.h"
 
 namespace Ui {
 class MainWindow;
@@ -21,10 +20,6 @@ private slots:
 
     void on_pushButton_Login_clicked();
 
-   // void on_pushButton_3_clicked();
-
-    //void on_pushButton_2_clicked();
-
     void on_pushButton_CreateAccount_clicked();
 
     void on_pushButton_GOTO_Login_clicked();
@@ -37,9 +32,14 @@ private slots:
 
     void on_pushButton_CancelCreateAccount_clicked();
 
+    void on_PushPass_clicked();
+
+    void on_cancel_forget_clicked();
+
+    void on_pushButton_3_clicked();
+    
 private:
     Ui::MainWindow *ui;
-    CreateAccount *acct_page;
 };
 
 #endif // MAINWINDOW_H

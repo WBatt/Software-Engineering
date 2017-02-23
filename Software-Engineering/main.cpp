@@ -1,8 +1,17 @@
-#include "app.h"
+#include "mainwindow.h"
+#include <QApplication>
+#include <QDebug>
+
+
+#include <QtCore/QCoreApplication>
 
 using namespace std;
 
 int main(int argc, char *argv[])
 {
-    return _instance->Execute(argc, argv);
+    QApplication a(argc, argv);
+    MainWindow w;
+    w.show();
+
+    return a.exec();
 }
