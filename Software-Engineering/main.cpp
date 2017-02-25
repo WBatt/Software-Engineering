@@ -2,16 +2,12 @@
 #include <QApplication>
 #include <QDebug>
 
-
+#include "app.h"
 #include <QtCore/QCoreApplication>
 
 using namespace std;
 
 int main(int argc, char *argv[])
 {
-    QApplication a(argc, argv);
-    MainWindow w;
-    w.show();
-
-    return a.exec();
+    return App::getInstance()->Execute(argc, argv);
 }

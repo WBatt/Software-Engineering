@@ -8,7 +8,7 @@ class CustomButton : public QPushButton
 public:
     CustomButton(QWidget *parent = 0);
 public slots:
-    void changeName();
+    virtual void ClickBehavior() = 0;
 
 private:
 

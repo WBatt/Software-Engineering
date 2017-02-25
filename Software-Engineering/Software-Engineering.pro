@@ -27,15 +27,22 @@ SOURCES += main.cpp\
         mainwindow.cpp \
     custombutton.cpp \
     createaccount.cpp \
-    app.cpp
+    app.cpp \
+    submitbutton.cpp \
+    userinfo.cpp \
+    customlineedit.cpp
 
 HEADERS  += mainwindow.h \
     custombutton.h \
     database.h \
     createaccount.h \
-    app.h
+    app.h \
+    submitbutton.h \
+    userinfo.h \
+    customlineedit.h
 
-FORMS    += mainwindow.ui
+FORMS    += mainwindow.ui \
+    createaccount.ui
 
 RESOURCES += \
     resources.qrc

@@ -68,7 +68,7 @@ QLabel
        <string notr="true"/>
       </property>
       <property name="currentIndex">
-       <number>1</number>
+       <number>3</number>
       </property>
       <widget class="QWidget" name="page_CreateAcct">
        <layout class="QVBoxLayout" name="verticalLayout">
@@ -220,7 +220,7 @@ QLabel
              <item>
               <layout class="QHBoxLayout" name="horizontalLayout_3">
                <item>
-                <widget class="QPushButton" name="pushButton_2">
+                <widget class="SubmitButton" name="pushButton_2">
                  <property name="minimumSize">
                   <size>
                    <width>0</width>
@@ -331,31 +331,12 @@ QLabel
           </property>
          </widget>
         </item>
-        <item row="2" column="2">
-         <spacer name="horizontalSpacer_6">
-          <property name="orientation">
-           <enum>Qt::Horizontal</enum>
+        <item row="2" column="1">
+         <widget class="QPushButton" name="pushButton_GOTO_CreateAccount">
+          <property name="text">
+           <string>GOTO Create Account</string>
           </property>
-          <property name="sizeHint" stdset="0">
-           <size>
-            <width>40</width>
-            <height>20</height>
-           </size>
-          </property>
-         </spacer>
-        </item>
-        <item row="1" column="0">
-         <spacer name="horizontalSpacer_5">
-          <property name="orientation">
-           <enum>Qt::Horizontal</enum>
-          </property>
-          <property name="sizeHint" stdset="0">
-           <size>
-            <width>40</width>
-            <height>20</height>
-           </size>
-          </property>
-         </spacer>
+         </widget>
         </item>
         <item row="0" column="1">
          <widget class="QLabel" name="label">
@@ -372,12 +353,31 @@ QLabel
           </property>
          </widget>
         </item>
-        <item row="2" column="1">
-         <widget class="QPushButton" name="pushButton_GOTO_CreateAccount">
-          <property name="text">
-           <string>GOTO Create Account</string>
+        <item row="1" column="0">
+         <spacer name="horizontalSpacer_5">
+          <property name="orientation">
+           <enum>Qt::Horizontal</enum>
           </property>
-         </widget>
+          <property name="sizeHint" stdset="0">
+           <size>
+            <width>40</width>
+            <height>20</height>
+           </size>
+          </property>
+         </spacer>
+        </item>
+        <item row="2" column="2">
+         <spacer name="horizontalSpacer_6">
+          <property name="orientation">
+           <enum>Qt::Horizontal</enum>
+          </property>
+          <property name="sizeHint" stdset="0">
+           <size>
+            <width>40</width>
+            <height>20</height>
+           </size>
+          </property>
+         </spacer>
         </item>
        </layout>
       </widget>
@@ -446,7 +446,7 @@ QLabel
              </spacer>
             </item>
             <item>
-             <widget class="QLineEdit" name="user_email_field">
+             <widget class="CustomLineEdit" name="user_email_field">
               <property name="text">
                <string>Username or email</string>
               </property>
@@ -471,7 +471,7 @@ QLabel
             <item>
              <layout class="QFormLayout" name="formLayout_2">
               <item row="0" column="0">
-               <widget class="QPushButton" name="PushPass">
+               <widget class="SubmitButton" name="PushPass">
                 <property name="minimumSize">
                  <size>
                   <width>150</width>
@@ -585,7 +585,7 @@ QLabel
      <x>0</x>
      <y>0</y>
      <width>800</width>
-     <height>17</height>
+     <height>21</height>
     </rect>
    </property>
   </widget>
@@ -600,6 +600,60 @@ QLabel
   <widget class="QStatusBar" name="statusBar"/>
  </widget>
  <layoutdefault spacing="6" margin="11"/>
+ <customwidgets>
+  <customwidget>
+   <class>SubmitButton</class>
+   <extends>QPushButton</extends>
+   <header>submitbutton.h</header>
+   <slots>
+    <signal>requestText()</signal>
+    <slot>getUserText(QString)</slot>
+    <slot>getPassText(QString)</slot>
+   </slots>
+  </customwidget>
+  <customwidget>
+   <class>CustomLineEdit</class>
+   <extends>QLineEdit</extends>
+   <header>customlineedit.h</header>
+   <slots>
+    <signal>sendText(QString)</signal>
+    <slot>handleRequest()</slot>
+   </slots>
+  </customwidget>
+ </customwidgets>
  <resources/>
- <connections/>
+ <connections>
+  <connection>
+   <sender>user_email_field</sender>
+   <signal>sendText(QString)</signal>
+   <receiver>PushPass</receiver>
+   <slot>getUserText(QString)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>426</x>
+     <y>332</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>426</x>
+     <y>415</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>PushPass</sender>
+   <signal>requestText()</signal>
+   <receiver>user_email_field</receiver>
+   <slot>handleRequest()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>298</x>
+     <y>404</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>298</x>
+     <y>330</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
 </ui>

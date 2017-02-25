@@ -2,12 +2,12 @@
 
 CustomButton::CustomButton(QWidget *parent) : QPushButton(parent)
 {
-    QObject::connect(this, SIGNAL(clicked()),this, SLOT(changeName()));
+    QObject::connect(this, SIGNAL(clicked()),this, SLOT(ClickBehavior()));
 
 }
 
-void CustomButton::changeName()
+void CustomButton::ClickBehavior()
 {
-    this->setText("PRESSED");
+    this->setText("ABSTRACT");
 
 }
