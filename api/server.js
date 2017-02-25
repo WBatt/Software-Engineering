@@ -7,7 +7,7 @@ var app		= express();//define our app using express
 var bodyParser = require('body-parser');// get body-parser
 var morgan	= require('morgan');// used to see requests
 var mongoose	= require('mongoose');// for worki  ng w/ our database
-var port	= process.env.PORT || 8080;//set the port for our app
+var port	= process.env.PORT || 80;//set the port for our app
 
 // APP CONFIGURATION -------------
 // use body parser so we can grab information from POST requests
@@ -42,7 +42,7 @@ apiRouter.use(function(req,res,next){
 });
 
 //test route to make sure everything is working
-// accessed at GET http://localhost:8080/api
+// accessed at GET http://localhost:80/api
 apiRouter.get('/',function(req,res){
 res.json({message: 'hooray! Welcome to our ap!'});
 });
@@ -54,7 +54,7 @@ res.json({message: 'hooray! Welcome to our ap!'});
 //---------------------------------
 apiRouter.route('/users')
 
-//create a user(accessed at POST http://localhost:8080/api/user)
+//create a user(accessed at POST http://localhost:80/api/user)
 .post(function(req,res){
 
 	//create a new instance of the User model
