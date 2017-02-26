@@ -5,6 +5,8 @@
 var express	= require('express');//call express
 var app		= express();//define our app using express
 var bodyParser = require('body-parser');// get body-parser
+var fs = require('fs');
+var path = require('path');
 var morgan	= require('morgan');// used to see requests
 var mongoose	= require('mongoose');// for worki  ng w/ our database
 var port	= process.env.PORT || 80;//set the port for our app
@@ -22,7 +24,10 @@ app.use(function(req,res,next){
 	res.setHeader('Access-Control-Allow-Headers', 'X-Request-With,content-type, \ Authorization');
 	next();
 });
-app.use(morgan('dev'));
+
+var accessLogStream = fs.createWriteStream(path.join(__dirname, 'access.log'), {flags: 'a'});
+
+app.use(morgan('combined', {stream: accessLogStream}));
 
 //ROUTES FOR OUR API
 //============================
@@ -69,7 +74,6 @@ apiRouter.route('/users')
 
 	//save the user and check for errors
 	user.save(function(err){
-		debugger
 		if(err){
 			//duplicate entry
 			if(err.code == 11000)
@@ -82,6 +86,40 @@ apiRouter.route('/users')
 
 				res.json({message: 'User created!'});
 			});
+});
+
+
+apiRouter.post('/login', function(req, res){
+	
+
+	User.findOne({
+		username: req.body.username
+	}).select('name username password').exec(function(err, user){
+		if err
+			throw err
+
+		if(!user){
+			res.json({
+				success: false,
+				message: "Authentication failed. No user found."
+			});
+		} else if (user) {
+			// check password
+			var validPassword = user.comparePassword(req.body.password);
+			if(!validPassword){
+				res.json({
+					success: false,
+					message: 'Authentication failed. Wrong Password'
+				});
+			} else {
+				res.json({
+					success: true,
+					message: 'Successsssss',
+					token: user.token
+				});
+			}
+		}
+	});
 });
 				
 
