@@ -6,6 +6,11 @@ MainWindow::MainWindow(QWidget *parent) :  QMainWindow(parent), ui(new Ui::MainW
     ui->setupUi(this);
 }
 
+void MainWindow::changePage(int index)
+{
+    ui->stackedWidget->setCurrentIndex(index);
+}
+
 MainWindow::~MainWindow()
 {
     delete ui;
@@ -60,7 +65,7 @@ void MainWindow::on_pushButton_CancelCreateAccount_clicked()
  * if false then inform user
  */
 void MainWindow::on_PushPass_clicked()
-{
+{/*
     //need to validate if true password or not
     bool confirmation = true;
     if(confirmation ){
@@ -70,7 +75,7 @@ void MainWindow::on_PushPass_clicked()
         ui->cancel_forget->setText("back");
     }
 
-
+*/
 }
 
 void MainWindow::on_cancel_forget_clicked()

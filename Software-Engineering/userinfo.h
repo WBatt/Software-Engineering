@@ -13,6 +13,8 @@ public:
     void setUsername(QString newUser);
     QString getPassword();
     void setPassword(QString newPass);
+    QString getPassConfirm();
+    void setPassConfirm(QString newPC);
 private:
     QString username;
     QString password; //i know, we aren't keeping this.

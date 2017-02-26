@@ -34,3 +34,12 @@ void UserInfo::setPassword(QString newPass)
 {
     password = newPass;
 }
+
+QString UserInfo::getPassConfirm()
+{
+    return passConfirm;
+}
+void UserInfo::setPassConfirm(QString newPC)
+{
+    passConfirm = newPC;
+}

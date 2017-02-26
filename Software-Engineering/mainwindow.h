@@ -13,6 +13,10 @@ class MainWindow : public QMainWindow
 
 public:
     explicit MainWindow(QWidget *parent = 0);
+
+    //functionality to change pages
+    void changePage(int index);
+
     ~MainWindow();
 
 private slots:

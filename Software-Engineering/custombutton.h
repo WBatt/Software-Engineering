@@ -11,6 +11,7 @@ public slots:
     virtual void ClickBehavior() = 0;
     void getUserText(QString userText);
     void getPassText(QString newPass);
+    void getPassConfirmText(QString passConfirmText);
 signals:
     void requestText();
 
