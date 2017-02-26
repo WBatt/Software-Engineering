@@ -1,8 +1,6 @@
 
 #include "mainwindow.h"
 #include <QApplication>
-#include <QSqlDatabase>
-#include <QSqlQuery>
 #include <QDebug>
 #include "app.h"
 #include <QtCore/QCoreApplication>
