@@ -1,19 +1,22 @@
 #include "custombutton.h"
-
+#include "app.h"
 CustomButton::CustomButton(QWidget *parent) : QPushButton(parent)
 {
-
-    QObject::connect(this, SIGNAL(clicked()),this, SLOT(doSometihngelse()));
-
+    QObject::connect(this, SIGNAL(clicked()),this, SLOT(ClickBehavior()));
 
 }
 
-void CustomButton::changeName()
+void CustomButton::ClickBehavior()
 {
-    this->setText("PRESSED");
-}
+    this->setText("ABSTRACT");
 
-void CustomButton::doSometihngelse()
+}
+void CustomButton::getUserText(QString userText)
 {
-    this->setText("Whoo");
+    App::getInstance()->user.setUsername(userText);
+}
+void CustomButton::getPassText(QString newPass)
+{
+    App::getInstance()->user.setPassword(newPass);
+
 }
