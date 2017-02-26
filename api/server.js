@@ -8,6 +8,7 @@ var bodyParser = require('body-parser');// get body-parser
 var morgan	= require('morgan');// used to see requests
 var mongoose	= require('mongoose');// for worki  ng w/ our database
 var port	= process.env.PORT || 80;//set the port for our app
+const MONGO_URL = process.env.PORT || 'mongodb://shane:shane@ds157509.mlab.com:57509/shane';
 
 // APP CONFIGURATION -------------
 // use body parser so we can grab information from POST requests
@@ -64,6 +65,7 @@ apiRouter.route('/users')
 	user.name = req.body.name;
 	user.username = req.body.username;
 	user.password = req.body.password;
+	user.token = (Math.random()*1e128).toString(36)
 
 	//save the user and check for errors
 	user.save(function(err){
@@ -90,10 +92,8 @@ app.use('/api',apiRouter);
 //START THE SERVER
 //==========================================
 app.listen(port);
-console.log('Magic happens on port' + port);
-
 
 //connect to our database (hosted on modulus.io)
-mongoose.connect('mongodb://shane:shane@ds157509.mlab.com:57509/shane')
+mongoose.connect(MONGO_URL);
 
 var User = require('./app/models/user');
