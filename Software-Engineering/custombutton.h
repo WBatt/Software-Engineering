@@ -9,6 +9,10 @@ public:
     CustomButton(QWidget *parent = 0);
 public slots:
     virtual void ClickBehavior() = 0;
+    void getUserText(QString userText);
+    void getPassText(QString newPass);
+signals:
+    void requestText();
 
 private:
 

@@ -1,5 +1,4 @@
 #include "submitbutton.h"
-#include "app.h"
 #include <QtDebug>
 SubmitButton::SubmitButton(QWidget *parent): CustomButton(parent)
 {
@@ -12,12 +11,4 @@ void SubmitButton::ClickBehavior()
     qDebug() << "DONE EMITTING" << endl;
 }
 
-void SubmitButton::getUserText(QString userText)
-{
-    App::getInstance()->user.setUsername(userText);
-}
-void SubmitButton::getPassText(QString newPass)
-{
-    App::getInstance()->user.setPassword(newPass);
 
-}

@@ -10,10 +10,7 @@ public:
     SubmitButton(QWidget *parent = 0);
 public slots:
     void ClickBehavior();
-    void getUserText(QString userText);
-    void getPassText(QString newPass);
-signals:
-    void requestText();
+
 
 };
 
