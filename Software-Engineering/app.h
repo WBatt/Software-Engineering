@@ -2,6 +2,7 @@
 #define APP_H
 
 #include "userinfo.h"
+#include "mainwindow.h"
 
 class App
 {
@@ -9,6 +10,7 @@ public:
     enum EPAGE
     {
         EP_REGISTER = 0,
+        EP_LOGIN = 1,
         EP_HOME = 2,
         EP_FORGOTPASS = 3
     };

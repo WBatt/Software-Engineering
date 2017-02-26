@@ -68,7 +68,7 @@ QLabel
        <string notr="true"/>
       </property>
       <property name="currentIndex">
-       <number>3</number>
+       <number>1</number>
       </property>
       <widget class="QWidget" name="page_CreateAcct">
        <layout class="QVBoxLayout" name="verticalLayout">
@@ -140,9 +140,22 @@ QLabel
               <number>35</number>
              </property>
              <item>
+              <widget class="QLabel" name="label_register_error">
+               <property name="text">
+                <string>error label</string>
+               </property>
+               <property name="alignment">
+                <set>Qt::AlignHCenter|Qt::AlignTop</set>
+               </property>
+               <property name="wordWrap">
+                <bool>true</bool>
+               </property>
+              </widget>
+             </item>
+             <item>
               <layout class="QHBoxLayout" name="horizontalLayout_5">
                <item>
-                <widget class="QLineEdit" name="lineEdit_username">
+                <widget class="CustomLineEdit" name="lineEdit_username">
                  <property name="minimumSize">
                   <size>
                    <width>0</width>
@@ -170,7 +183,7 @@ QLabel
              <item>
               <layout class="QHBoxLayout" name="horizontalLayout_7">
                <item>
-                <widget class="QLineEdit" name="lineEdit_password">
+                <widget class="CustomLineEdit" name="lineEdit_password">
                  <property name="minimumSize">
                   <size>
                    <width>0</width>
@@ -220,7 +233,7 @@ QLabel
              <item>
               <layout class="QHBoxLayout" name="horizontalLayout_3">
                <item>
-                <widget class="SubmitButton" name="pushButton_2">
+                <widget class="RegisterButton" name="pushButton_2">
                  <property name="minimumSize">
                   <size>
                    <width>0</width>
@@ -321,7 +334,82 @@ QLabel
         </item>
        </layout>
       </widget>
-      <widget class="QWidget" name="page_Login"/>
+      <widget class="QWidget" name="page_Login">
+       <widget class="SubmitButton" name="pushButton_login_login">
+        <property name="enabled">
+         <bool>true</bool>
+        </property>
+        <property name="geometry">
+         <rect>
+          <x>260</x>
+          <y>310</y>
+          <width>75</width>
+          <height>23</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>Login</string>
+        </property>
+       </widget>
+       <widget class="QPushButton" name="pushButton">
+        <property name="geometry">
+         <rect>
+          <x>380</x>
+          <y>310</y>
+          <width>75</width>
+          <height>23</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>Cancel</string>
+        </property>
+       </widget>
+       <widget class="CustomLineEdit" name="lineEdit_login_user">
+        <property name="geometry">
+         <rect>
+          <x>260</x>
+          <y>150</y>
+          <width>191</width>
+          <height>31</height>
+         </rect>
+        </property>
+        <property name="placeholderText">
+         <string>username</string>
+        </property>
+       </widget>
+       <widget class="CustomLineEdit" name="lineEdit_login_pass">
+        <property name="geometry">
+         <rect>
+          <x>260</x>
+          <y>190</y>
+          <width>191</width>
+          <height>31</height>
+         </rect>
+        </property>
+        <property name="placeholderText">
+         <string>password</string>
+        </property>
+       </widget>
+       <widget class="QLabel" name="label_login_error">
+        <property name="enabled">
+         <bool>true</bool>
+        </property>
+        <property name="geometry">
+         <rect>
+          <x>260</x>
+          <y>240</y>
+          <width>191</width>
+          <height>51</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; color:#ff0000;&quot;&gt;error&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+        </property>
+        <property name="alignment">
+         <set>Qt::AlignHCenter|Qt::AlignTop</set>
+        </property>
+       </widget>
+      </widget>
       <widget class="QWidget" name="Home">
        <layout class="QGridLayout" name="gridLayout_4">
         <item row="1" column="1">
@@ -471,7 +559,7 @@ QLabel
             <item>
              <layout class="QFormLayout" name="formLayout_2">
               <item row="0" column="0">
-               <widget class="SubmitButton" name="PushPass">
+               <widget class="QPushButton" name="PushPass">
                 <property name="minimumSize">
                  <size>
                   <width>150</width>
@@ -621,6 +709,17 @@ QLabel
     <slot>handleRequest()</slot>
    </slots>
   </customwidget>
+  <customwidget>
+   <class>RegisterButton</class>
+   <extends>QPushButton</extends>
+   <header>registerbutton.h</header>
+   <slots>
+    <signal>requestText()</signal>
+    <slot>getPassText(QString)</slot>
+    <slot>getPassConfirmText(QString)</slot>
+    <slot>getUserText(QString)</slot>
+   </slots>
+  </customwidget>
  </customwidgets>
  <resources/>
  <connections>
@@ -663,12 +762,12 @@ QLabel
    <slot>handleRequest()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>218</x>
-     <y>405</y>
+     <x>219</x>
+     <y>404</y>
     </hint>
     <hint type="destinationlabel">
-     <x>231</x>
-     <y>365</y>
+     <x>219</x>
+     <y>364</y>
     </hint>
    </hints>
   </connection>
@@ -679,12 +778,140 @@ QLabel
    <slot>getPassConfirmText(QString)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>213</x>
-     <y>357</y>
+     <x>482</x>
+     <y>366</y>
     </hint>
     <hint type="destinationlabel">
-     <x>213</x>
-     <y>411</y>
+     <x>252</x>
+     <y>395</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>pushButton_2</sender>
+   <signal>requestText()</signal>
+   <receiver>lineEdit_password</receiver>
+   <slot>handleRequest()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>201</x>
+     <y>402</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>201</x>
+     <y>342</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>pushButton_2</sender>
+   <signal>requestText()</signal>
+   <receiver>lineEdit_username</receiver>
+   <slot>handleRequest()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>186</x>
+     <y>412</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>186</x>
+     <y>304</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>lineEdit_password</sender>
+   <signal>sendText(QString)</signal>
+   <receiver>pushButton_2</receiver>
+   <slot>getPassText(QString)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>509</x>
+     <y>337</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>244</x>
+     <y>402</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>lineEdit_username</sender>
+   <signal>sendText(QString)</signal>
+   <receiver>pushButton_2</receiver>
+   <slot>getUserText(QString)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>534</x>
+     <y>309</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>238</x>
+     <y>415</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>pushButton_login_login</sender>
+   <signal>requestText()</signal>
+   <receiver>lineEdit_login_user</receiver>
+   <slot>handleRequest()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>292</x>
+     <y>364</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>286</x>
+     <y>215</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>pushButton_login_login</sender>
+   <signal>requestText()</signal>
+   <receiver>lineEdit_login_pass</receiver>
+   <slot>handleRequest()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>307</x>
+     <y>365</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>298</x>
+     <y>255</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>lineEdit_login_user</sender>
+   <signal>sendText(QString)</signal>
+   <receiver>pushButton_login_login</receiver>
+   <slot>getUserText(QString)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>313</x>
+     <y>208</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>314</x>
+     <y>360</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>lineEdit_login_pass</sender>
+   <signal>sendText(QString)</signal>
+   <receiver>pushButton_login_login</receiver>
+   <slot>getPassText(QString)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>329</x>
+     <y>247</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>329</x>
+     <y>367</y>
     </hint>
    </hints>
   </connection>

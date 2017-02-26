@@ -4,8 +4,20 @@
 MainWindow::MainWindow(QWidget *parent) :  QMainWindow(parent), ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
+    ui->label_login_error->setVisible(false);
+    ui->label_register_error->setVisible(false);
 }
 
+void MainWindow::loginShowError(QString msg)
+{
+    ui->label_login_error->setText(msg);
+    ui->label_login_error->setVisible(true);
+}
+void MainWindow::registerShowError(QString msg)
+{
+    ui->label_register_error->setText(msg);
+    ui->label_register_error->setVisible(true);
+}
 void MainWindow::changePage(int index)
 {
     ui->stackedWidget->setCurrentIndex(index);
@@ -65,7 +77,7 @@ void MainWindow::on_pushButton_CancelCreateAccount_clicked()
  * if false then inform user
  */
 void MainWindow::on_PushPass_clicked()
-{/*
+{
     //need to validate if true password or not
     bool confirmation = true;
     if(confirmation ){
@@ -74,8 +86,6 @@ void MainWindow::on_PushPass_clicked()
         ui->user_email_field->setVisible(false);
         ui->cancel_forget->setText("back");
     }
-
-*/
 }
 
 void MainWindow::on_cancel_forget_clicked()

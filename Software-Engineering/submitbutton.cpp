@@ -1,5 +1,4 @@
 #include "submitbutton.h"
-#include "mainwindow.h"
 #include "app.h"
 #include <QtDebug>
 SubmitButton::SubmitButton(QWidget *parent): CustomButton(parent)
@@ -13,14 +12,16 @@ void SubmitButton::ClickBehavior()
     emit requestText();
 
     //authenticate user info with that on the db
-    //TODO - communicate with server
-
-    //use result to react to a pass/fail
-    //TODO - create
-
-    //testing the changePage
-    App::getInstance()->w->changePage(App::EP_HOME);
-
+    //TODO - communicate with server, use result to determine path in condition
+    if(false)
+    {
+        App::getInstance()->w->loginShowError("invalid user information");
+    }
+    else
+    {
+        //change the page to the dashboard, until then im rerouting home
+        App::getInstance()->w->changePage(App::EP_HOME);
+    }
     qDebug() << "DONE EMITTING" << endl;
 }
 

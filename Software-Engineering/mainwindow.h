@@ -17,6 +17,10 @@ public:
     //functionality to change pages
     void changePage(int index);
 
+    //error message handlers
+    void loginShowError(QString msg);
+    void registerShowError(QString msg);
+
     ~MainWindow();
 
 private slots:
