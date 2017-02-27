@@ -8,8 +8,8 @@ public:
     UserInfo();
 
     bool checkPassConfirm();
-    int loginUser();
-    int registerUser();
+    bool loginUser();
+    bool registerUser();
     //get/set
     QString getUsername();
     void setUsername(QString newUser);
@@ -21,6 +21,7 @@ private:
     QString username;
     QString password; //i know, we aren't keeping this.
     QString passConfirm;
+    QString token;
     int allergens;
 };
 #endif // USERINFO_H

@@ -15,17 +15,22 @@ bool UserInfo::checkPassConfirm()
     return password.compare(passConfirm,Qt::CaseSensitive) == 0;
 }
 
-int UserInfo::loginUser()
+bool UserInfo::loginUser()
 {
-    int result = 0;
+
     //server api call authentication
+    QJsonObject attempt = App::getInstance()->restAPI->login(username, password);
+    qDebug() << attempt["success"];
+    if(attempt["success"].toBool())
+    {
+        token = attempt["token"].toString();
+        qDebug() << token;
+    }
 
-
-    return result;
+    return true;
 }
-int UserInfo::registerUser()
+bool UserInfo::registerUser()
 {
-    int result = 0;
     //server api call to add user to db
     QJsonObject response = App::getInstance()->restAPI->register_user(username, username, password);
 
@@ -33,9 +38,9 @@ int UserInfo::registerUser()
     if(!response["success"].toBool())
     {
         App::getInstance()->w->registerShowError(response["message"].toString());
-        result = -1;
+        return false;
     }
-    return result;
+    return true;
 }
 QString UserInfo::getUsername()
 {

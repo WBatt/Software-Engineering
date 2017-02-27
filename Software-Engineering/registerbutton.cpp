@@ -15,7 +15,7 @@ void RegisterButton::ClickBehavior()
     if(App::getInstance()->user.checkPassConfirm())
     {
         //add user info to database
-        if(App::getInstance()->user.registerUser()== 0)
+        if(App::getInstance()->user.registerUser())
         {
             //switch page to *dashboard* rerouting to home page
             App::getInstance()->w->changePage(App::EP_HOME);

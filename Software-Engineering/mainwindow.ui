@@ -68,7 +68,7 @@ QLabel
        <string notr="true"/>
       </property>
       <property name="currentIndex">
-       <number>0</number>
+       <number>1</number>
       </property>
       <widget class="QWidget" name="page_CreateAcct">
        <layout class="QVBoxLayout" name="verticalLayout">
@@ -724,66 +724,18 @@ QLabel
  <resources/>
  <connections>
   <connection>
-   <sender>user_email_field</sender>
-   <signal>sendText(QString)</signal>
-   <receiver>PushPass</receiver>
-   <slot>getUserText(QString)</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>426</x>
-     <y>332</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>426</x>
-     <y>415</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>PushPass</sender>
-   <signal>requestText()</signal>
-   <receiver>user_email_field</receiver>
-   <slot>handleRequest()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>298</x>
-     <y>404</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>298</x>
-     <y>330</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
    <sender>pushButton_2</sender>
    <signal>requestText()</signal>
    <receiver>lineEdit_confirmPassword</receiver>
    <slot>handleRequest()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>219</x>
+     <x>193</x>
      <y>404</y>
     </hint>
     <hint type="destinationlabel">
-     <x>219</x>
-     <y>364</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>lineEdit_confirmPassword</sender>
-   <signal>sendText(QString)</signal>
-   <receiver>pushButton_2</receiver>
-   <slot>getPassConfirmText(QString)</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>482</x>
-     <y>366</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>252</x>
-     <y>395</y>
+     <x>194</x>
+     <y>382</y>
     </hint>
    </hints>
   </connection>
@@ -794,12 +746,12 @@ QLabel
    <slot>handleRequest()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>201</x>
-     <y>402</y>
+     <x>207</x>
+     <y>404</y>
     </hint>
     <hint type="destinationlabel">
-     <x>201</x>
-     <y>342</y>
+     <x>212</x>
+     <y>334</y>
     </hint>
    </hints>
   </connection>
@@ -810,28 +762,12 @@ QLabel
    <slot>handleRequest()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>186</x>
-     <y>412</y>
+     <x>226</x>
+     <y>407</y>
     </hint>
     <hint type="destinationlabel">
-     <x>186</x>
-     <y>304</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>lineEdit_password</sender>
-   <signal>sendText(QString)</signal>
-   <receiver>pushButton_2</receiver>
-   <slot>getPassText(QString)</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>509</x>
-     <y>337</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>244</x>
-     <y>402</y>
+     <x>230</x>
+     <y>303</y>
     </hint>
    </hints>
   </connection>
@@ -843,11 +779,43 @@ QLabel
    <hints>
     <hint type="sourcelabel">
      <x>534</x>
-     <y>309</y>
+     <y>300</y>
     </hint>
     <hint type="destinationlabel">
-     <x>238</x>
-     <y>415</y>
+     <x>242</x>
+     <y>414</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>lineEdit_password</sender>
+   <signal>sendText(QString)</signal>
+   <receiver>pushButton_2</receiver>
+   <slot>getPassText(QString)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>549</x>
+     <y>333</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>241</x>
+     <y>408</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>lineEdit_confirmPassword</sender>
+   <signal>sendText(QString)</signal>
+   <receiver>pushButton_2</receiver>
+   <slot>getPassConfirmText(QString)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>576</x>
+     <y>373</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>249</x>
+     <y>400</y>
     </hint>
    </hints>
   </connection>
@@ -858,12 +826,12 @@ QLabel
    <slot>handleRequest()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>292</x>
-     <y>364</y>
+     <x>301</x>
+     <y>355</y>
     </hint>
     <hint type="destinationlabel">
-     <x>286</x>
-     <y>215</y>
+     <x>278</x>
+     <y>207</y>
     </hint>
    </hints>
   </connection>
@@ -874,12 +842,12 @@ QLabel
    <slot>handleRequest()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>307</x>
-     <y>365</y>
+     <x>303</x>
+     <y>362</y>
     </hint>
     <hint type="destinationlabel">
-     <x>298</x>
-     <y>255</y>
+     <x>302</x>
+     <y>253</y>
     </hint>
    </hints>
   </connection>
@@ -890,12 +858,12 @@ QLabel
    <slot>getUserText(QString)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>313</x>
-     <y>208</y>
+     <x>404</x>
+     <y>211</y>
     </hint>
     <hint type="destinationlabel">
-     <x>314</x>
-     <y>360</y>
+     <x>330</x>
+     <y>363</y>
     </hint>
    </hints>
   </connection>
@@ -906,12 +874,12 @@ QLabel
    <slot>getPassText(QString)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>329</x>
+     <x>434</x>
      <y>247</y>
     </hint>
     <hint type="destinationlabel">
-     <x>329</x>
-     <y>367</y>
+     <x>337</x>
+     <y>358</y>
     </hint>
    </hints>
   </connection>

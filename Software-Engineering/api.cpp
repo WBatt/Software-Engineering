@@ -1,13 +1,13 @@
 #include "api.h"
 #include "database.h"
+#include <QtNetwork>
 #include <QNetworkRequest>
 #include <QNetworkReply>
 #include <QUrl>
 #include <QUrlQuery>
 #include <QJsonDocument>
-#include <QJsonObject>
-#include <QtNetwork>
 
+using namespace std;
 
 Api::Api()
 {
@@ -45,10 +45,8 @@ QJsonObject Api::register_user(QString name, QString username, QString password)
         qDebug() << "Error " << reply->errorString();
         QJsonDocument response(
         {
-
             "success", false,
             "message", reply->errorString()
-
         });
         delete reply;
         return QJsonObject(response.object());
