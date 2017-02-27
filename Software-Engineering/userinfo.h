@@ -18,6 +18,7 @@ public:
     QString getPassConfirm();
     void setPassConfirm(QString newPC);
 private:
+    QString email;
     QString username;
     QString password; //i know, we aren't keeping this.
     QString passConfirm;

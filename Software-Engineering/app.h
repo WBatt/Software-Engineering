@@ -7,6 +7,7 @@
 class App
 {
 public:
+    //enum corresponding names to indices
     enum EPAGE
     {
         EP_REGISTER = 0,
@@ -14,10 +15,16 @@ public:
         EP_HOME = 2,
         EP_FORGOTPASS = 3
     };
+    //constructor
     App();
+
+    //delete any copy functions or constructors
+    App(App const&) = delete;
+    void operator=(App const&) = delete;
+
     int Execute(int argc, char* argv[]);
     static App* getInstance();
-    Api* restAPI;
+    Api restAPI;
     UserInfo user;
     MainWindow* w;
 private:

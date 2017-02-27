@@ -3,6 +3,7 @@
 #include "app.h"
 UserInfo::UserInfo()
 {
+    email = "jonnyeveryman@spammail.com";
     username = "Guest";
     password = "pass";
     passConfirm = "Pass";
@@ -17,22 +18,25 @@ bool UserInfo::checkPassConfirm()
 
 bool UserInfo::loginUser()
 {
-
     //server api call authentication
-    QJsonObject attempt = App::getInstance()->restAPI->login(username, password);
+    QJsonObject attempt = App::getInstance()->restAPI.login(username, password);
     qDebug() << attempt["success"];
     if(attempt["success"].toBool())
     {
+        //save token
         token = attempt["token"].toString();
-        qDebug() << token;
+        //change the page to the dashboard, until then im rerouting home
+        App::getInstance()->w->changePage(App::EP_HOME);
+        return true;
     }
-
-    return true;
+    //else failed so display error message
+    App::getInstance()->w->loginShowError(attempt["message"].toString());
+    return false;
 }
 bool UserInfo::registerUser()
 {
     //server api call to add user to db
-    QJsonObject response = App::getInstance()->restAPI->register_user(username, username, password);
+    QJsonObject response = App::getInstance()->restAPI.register_user(username, username, password);
 
     qDebug() << response["message"].toString() << endl;
     if(!response["success"].toBool())
@@ -40,6 +44,9 @@ bool UserInfo::registerUser()
         App::getInstance()->w->registerShowError(response["message"].toString());
         return false;
     }
+
+    //switch page to *dashboard* rerouting to home page
+    App::getInstance()->w->changePage(App::EP_HOME);
     return true;
 }
 QString UserInfo::getUsername()

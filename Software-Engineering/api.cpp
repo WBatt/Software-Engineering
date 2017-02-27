@@ -11,11 +11,14 @@ using namespace std;
 
 Api::Api()
 {
+
+}
+void Api::init()
+{
     webserver = "http://";
     webserver.append(server_address);
     webserver.append("/api/");
 }
-
 QJsonObject Api::register_user(QString name, QString username, QString password)
 {
     QEventLoop eventLoop;

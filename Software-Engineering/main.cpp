@@ -1,7 +1,6 @@
 
 #include "mainwindow.h"
 #include "app.h"
-#include <QtCore/QCoreApplication>
 
 using namespace std;
 

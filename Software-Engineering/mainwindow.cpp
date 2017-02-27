@@ -1,6 +1,6 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
-
+#include "app.h"
 MainWindow::MainWindow(QWidget *parent) :  QMainWindow(parent), ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
@@ -28,9 +28,9 @@ MainWindow::~MainWindow()
     delete ui;
 }
 
-void MainWindow::on_pushButton_clicked()
+void MainWindow::on_pushButton_login_cancel_clicked()
 {
-    ui->stackedWidget->setCurrentIndex(1);
+    ui->stackedWidget->setCurrentIndex(App::EP_HOME);
 }
 
 
@@ -48,17 +48,17 @@ void MainWindow::on_pushButton_CreateAccount_clicked()
 
 void MainWindow::on_pushButton_GOTO_Login_clicked()
 {
-    ui->stackedWidget->setCurrentIndex(0);
+    ui->stackedWidget->setCurrentIndex(App::EP_LOGIN);
 }
 
 void MainWindow::on_pushButton_GOTO_CreateAccount_clicked()
 {
-    ui->stackedWidget->setCurrentIndex(2);
+    ui->stackedWidget->setCurrentIndex(App::EP_REGISTER);
 }
 
 void MainWindow::on_pushButton_ForgotPass_clicked()
 {
-    ui->stackedWidget->setCurrentIndex(3);
+    ui->stackedWidget->setCurrentIndex(App::EP_FORGOTPASS);
 }
 
 void MainWindow::on_pushButton_register_clicked()
@@ -68,7 +68,7 @@ void MainWindow::on_pushButton_register_clicked()
 
 void MainWindow::on_pushButton_CancelCreateAccount_clicked()
 {
-    ui->stackedWidget->setCurrentIndex(0);
+    ui->stackedWidget->setCurrentIndex(App::EP_HOME);
 }
 /*
  * if a valid user name or password
@@ -104,7 +104,7 @@ void MainWindow::on_cancel_forget_clicked()
         ui->stackedWidget->setCurrentIndex(1);
     }
 }
-void MainWindow::on_pushButton_3_clicked()
+void MainWindow::on_pushButton_Register_Cancel_clicked()
 {
-
+    ui->stackedWidget->setCurrentIndex(App::EP_HOME);
 }

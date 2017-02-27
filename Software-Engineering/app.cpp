@@ -19,8 +19,6 @@ App::App()
     {
         delete this;
     }
-
-
 }
 
 
@@ -35,11 +33,14 @@ App* App::getInstance(){return _instance;}
 GUI team tweak stuff here versus throwing it into the main.cpp*/
 int App::Execute(int argc, char* argv[])
 {
+    //initialize the webserver address
+    restAPI.init();
+    //initialize the application window
     QApplication a(argc, argv);
-    restAPI = new Api();
+    //initialize window contents
     w = new MainWindow();
+    //show main window in the main view
     w->show();
 
     return a.exec();
-
 }

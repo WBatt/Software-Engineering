@@ -7,6 +7,7 @@ class Api
 {
     public:
         Api();
+        void init();
         QJsonObject register_user(QString name, QString username, QString password);
         QJsonObject login(QString username, QString password);
         QJsonArray getItem(QString keyword);

@@ -13,11 +13,8 @@ void SubmitButton::ClickBehavior()
 
     //authenticate user info with that on the db
     //TODO - communicate with server, use result to determine path in condition
-    if(App::getInstance()->user.loginUser())
-    {
-        //change the page to the dashboard, until then im rerouting home
-        App::getInstance()->w->changePage(App::EP_HOME);
-    }
+    App::getInstance()->user.loginUser();
+
     qDebug() << "DONE EMITTING" << endl;
 }
 

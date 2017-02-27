@@ -24,7 +24,7 @@ public:
     ~MainWindow();
 
 private slots:
-    void on_pushButton_clicked();
+    void on_pushButton_login_cancel_clicked();
 
     void on_pushButton_Login_clicked();
 
@@ -44,7 +44,7 @@ private slots:
 
     void on_cancel_forget_clicked();
 
-    void on_pushButton_3_clicked();
+    void on_pushButton_Register_Cancel_clicked();
     
 private:
     Ui::MainWindow *ui;
