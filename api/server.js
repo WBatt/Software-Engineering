@@ -9,8 +9,9 @@ var fs = require('fs');
 var path = require('path');
 var morgan	= require('morgan');// used to see requests
 var mongoose	= require('mongoose');// for worki  ng w/ our database
+mongoose.Promise = require('bluebird');
 var port	= process.env.PORT || 80;//set the port for our app
-const MONGO_URL = process.env.PORT || 'mongodb://shane:shane@ds157509.mlab.com:57509/shane';
+const MONGO_URL = process.env.MONGO_URL || 'mongodb://shane:shane@ds157509.mlab.com:57509/shane';
 
 // APP CONFIGURATION -------------
 // use body parser so we can grab information from POST requests
@@ -71,6 +72,7 @@ apiRouter.route('/users')
 	user.username = req.body.username;
 	user.password = req.body.password;
 	user.token = (Math.random()*1e128).toString(36)
+	user.token_expiration = Date.now() + (36000 * 60 * 24 * 60) // 2 months for now
 
 	//save the user and check for errors
 	user.save(function(err){
@@ -91,19 +93,18 @@ apiRouter.route('/users')
 
 apiRouter.post('/login', function(req, res){
 	
+	var query = User.findOne({username: req.body.username});
+	query.select("username password token");
+	var promise = query.exec();
 
-	User.findOne({
-		username: req.body.username
-	}).select('name username password').exec(function(err, user){
-		if err
-			throw err
-
+	promise.then(function(user){
 		if(!user){
 			res.json({
 				success: false,
 				message: "Authentication failed. No user found."
 			});
 		} else if (user) {
+//			user.save();
 			// check password
 			var validPassword = user.comparePassword(req.body.password);
 			if(!validPassword){
@@ -112,13 +113,22 @@ apiRouter.post('/login', function(req, res){
 					message: 'Authentication failed. Wrong Password'
 				});
 			} else {
+				var local_token = user.token || "In_Development"
 				res.json({
 					success: true,
 					message: 'Successsssss',
-					token: user.token
+					token: local_token
 				});
 			}
 		}
+
+
+	})
+	.catch(function(err){
+		res.json({
+			"success": false,
+			"message": err
+		});
 	});
 });
 				
