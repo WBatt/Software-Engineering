@@ -3,7 +3,7 @@
 
 #include "userinfo.h"
 #include "mainwindow.h"
-
+#include "api.h"
 class App
 {
 public:
@@ -17,6 +17,7 @@ public:
     App();
     int Execute(int argc, char* argv[]);
     static App* getInstance();
+    Api* restAPI;
     UserInfo user;
     MainWindow* w;
 private:

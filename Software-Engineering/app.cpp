@@ -1,8 +1,6 @@
-
 #include <QApplication>
 #include <QDebug>
 #include "app.h"
-#include "api.h"
 #include <QtCore/QCoreApplication>
 
 using namespace std;
@@ -38,22 +36,7 @@ GUI team tweak stuff here versus throwing it into the main.cpp*/
 int App::Execute(int argc, char* argv[])
 {
     QApplication a(argc, argv);
-    Api RestApi;
-    QString name = "new";
-    QString username = "new";
-    QString password = "class";
-    QJsonObject response = RestApi.register_user(name, username, password);
-    if(response["success"].toBool())
-    {
-        // If call is successful
-    }
-
-    else
-
-    {
-      // Not Successful
-    }
-
+    restAPI = new Api();
     w = new MainWindow();
     w->show();
 

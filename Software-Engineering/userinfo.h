@@ -8,6 +8,8 @@ public:
     UserInfo();
 
     bool checkPassConfirm();
+    int loginUser();
+    int registerUser();
     //get/set
     QString getUsername();
     void setUsername(QString newUser);

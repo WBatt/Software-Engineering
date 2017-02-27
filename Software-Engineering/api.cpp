@@ -6,6 +6,8 @@
 #include <QUrlQuery>
 #include <QJsonDocument>
 #include <QJsonObject>
+#include <QtNetwork>
+
 
 Api::Api()
 {

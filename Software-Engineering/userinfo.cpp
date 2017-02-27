@@ -1,5 +1,6 @@
 #include "userinfo.h"
 #include <QtDebug>
+#include "app.h"
 UserInfo::UserInfo()
 {
     username = "Guest";
@@ -14,6 +15,28 @@ bool UserInfo::checkPassConfirm()
     return password.compare(passConfirm,Qt::CaseSensitive) == 0;
 }
 
+int UserInfo::loginUser()
+{
+    int result = 0;
+    //server api call authentication
+
+
+    return result;
+}
+int UserInfo::registerUser()
+{
+    int result = 0;
+    //server api call to add user to db
+    QJsonObject response = App::getInstance()->restAPI->register_user(username, username, password);
+
+    qDebug() << response["message"].toString() << endl;
+    if(!response["success"].toBool())
+    {
+        App::getInstance()->w->registerShowError(response["message"].toString());
+        result = -1;
+    }
+    return result;
+}
 QString UserInfo::getUsername()
 {
     return username;

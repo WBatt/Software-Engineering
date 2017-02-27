@@ -15,15 +15,18 @@ void RegisterButton::ClickBehavior()
     if(App::getInstance()->user.checkPassConfirm())
     {
         //add user info to database
+        if(App::getInstance()->user.registerUser()== 0)
+        {
+            //switch page to *dashboard* rerouting to home page
+            App::getInstance()->w->changePage(App::EP_HOME);
+        }
 
-        //switch page to *dashboard* rerouting to home page
-        App::getInstance()->w->changePage(App::EP_HOME);
     }
     else
     {
         qDebug() << "Password mismatch" << endl;
         //display register error message
-        App::getInstance()->w->registerShowError("Password does not match");
+
     }
 
 }
