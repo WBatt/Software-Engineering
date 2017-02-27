@@ -1,5 +1,4 @@
 
-#include "mainwindow.h"
 #include <QApplication>
 #include <QDebug>
 #include "app.h"
@@ -22,7 +21,10 @@ App::App()
     {
         delete this;
     }
+
+
 }
+
 
 /*returns the singleton instance of the entire application.
 use this to reference anything like user data or product data
@@ -35,7 +37,6 @@ App* App::getInstance(){return _instance;}
 GUI team tweak stuff here versus throwing it into the main.cpp*/
 int App::Execute(int argc, char* argv[])
 {
-
     QApplication a(argc, argv);
     Api RestApi;
     QString name = "new";
@@ -53,8 +54,8 @@ int App::Execute(int argc, char* argv[])
       // Not Successful
     }
 
-    MainWindow w;
-    w.show();
+    w = new MainWindow();
+    w->show();
 
     return a.exec();
 

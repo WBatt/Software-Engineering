@@ -22,7 +22,7 @@ QString UserInfo::getUsername()
 void UserInfo::setUsername(QString newUser)
 {
     username = newUser;
-    qDebug() << "SET USERNAME TO " << username << endl;
+    qDebug() << "SET USERNAME TO " << username;
 }
 
 QString UserInfo::getPassword()
@@ -33,4 +33,15 @@ QString UserInfo::getPassword()
 void UserInfo::setPassword(QString newPass)
 {
     password = newPass;
+    qDebug() << "SET PASSWORD TO " << password;
+}
+
+QString UserInfo::getPassConfirm()
+{
+    return passConfirm;
+}
+void UserInfo::setPassConfirm(QString newPC)
+{
+    passConfirm = newPC;
+    qDebug() << "SET PASSWORD CONFIRM TO " << passConfirm;
 }

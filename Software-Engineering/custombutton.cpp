@@ -18,5 +18,8 @@ void CustomButton::getUserText(QString userText)
 void CustomButton::getPassText(QString newPass)
 {
     App::getInstance()->user.setPassword(newPass);
-
+}
+void CustomButton::getPassConfirmText(QString passConfirmText)
+{
+    App::getInstance()->user.setPassConfirm(passConfirmText);
 }

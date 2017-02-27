@@ -4,6 +4,23 @@
 MainWindow::MainWindow(QWidget *parent) :  QMainWindow(parent), ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
+    ui->label_login_error->setVisible(false);
+    ui->label_register_error->setVisible(false);
+}
+
+void MainWindow::loginShowError(QString msg)
+{
+    ui->label_login_error->setText(msg);
+    ui->label_login_error->setVisible(true);
+}
+void MainWindow::registerShowError(QString msg)
+{
+    ui->label_register_error->setText(msg);
+    ui->label_register_error->setVisible(true);
+}
+void MainWindow::changePage(int index)
+{
+    ui->stackedWidget->setCurrentIndex(index);
 }
 
 MainWindow::~MainWindow()
@@ -69,8 +86,6 @@ void MainWindow::on_PushPass_clicked()
         ui->user_email_field->setVisible(false);
         ui->cancel_forget->setText("back");
     }
-
-
 }
 
 void MainWindow::on_cancel_forget_clicked()

@@ -32,6 +32,7 @@ SOURCES += main.cpp\
     userinfo.cpp \
     customlineedit.cpp \
     api.cpp
+    registerbutton.cpp
 
 HEADERS  += mainwindow.h \
     custombutton.h \
@@ -42,6 +43,7 @@ HEADERS  += mainwindow.h \
     userinfo.h \
     customlineedit.h \
     api.h
+    registerbutton.h
 
 FORMS    += mainwindow.ui \
     createaccount.ui
