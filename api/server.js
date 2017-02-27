@@ -84,7 +84,7 @@ apiRouter.route('/users')
 				}
 			
 
-				res.json({message: 'User created!'});
+				res.json({success: true, message: 'User created!'});
 			});
 });
 

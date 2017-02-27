@@ -1,17 +1,10 @@
 
 #include "mainwindow.h"
 #include <QApplication>
-#include <QtNetwork>
-#include <QNetworkRequest>
-#include <QNetworkReply>
-#include <QUrl>
-#include <QUrlQuery>
-#include <QJsonDocument>
 #include <QDebug>
 #include "app.h"
+#include "api.h"
 #include <QtCore/QCoreApplication>
-
-void sendRequest();
 
 using namespace std;
 
@@ -44,40 +37,25 @@ int App::Execute(int argc, char* argv[])
 {
 
     QApplication a(argc, argv);
-    sendRequest();
+    Api RestApi;
+    QString name = "new";
+    QString username = "new";
+    QString password = "class";
+    QJsonObject response = RestApi.register_user(name, username, password);
+    if(response["success"].toBool())
+    {
+        // If call is successful
+    }
+
+    else
+
+    {
+      // Not Successful
+    }
+
     MainWindow w;
     w.show();
 
     return a.exec();
 
-}
-
-void sendRequest()
-{
-    QEventLoop eventLoop;
-
-    QNetworkAccessManager manager;
-    QObject::connect(&manager, SIGNAL(finished(QNetworkReply*)), &eventLoop, SLOT(quit()));
-
-    QNetworkRequest req(QUrl(QString("http://198.199.103.52/api/users/")));
-
-    req.setHeader(QNetworkRequest::ContentTypeHeader, "application/x-www-form-urlencoded");
-
-    QUrlQuery params;
-    params.addQueryItem("username", "testing");
-    params.addQueryItem("password", "Testing");
-
-    QNetworkReply *reply = manager.post(req, params.toString(QUrl::FullyEncoded).toUtf8());
-    eventLoop.exec();
-
-    if (reply->error() == QNetworkReply::NoError){
-        //qDebug() << "Success";
-        QJsonObject json_obj = QJsonDocument::fromJson(reply->readAll()).object();
-        qDebug() << "Success " << json_obj["message"].toString();
-        delete reply;
-    } else {
-        qDebug() << "Error ";
-        qDebug() << "Error " << reply->errorString();
-        delete reply;
-    }
 }
