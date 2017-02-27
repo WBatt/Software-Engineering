@@ -8,8 +8,8 @@ class Api
     public:
         Api();
         QJsonObject register_user(QString name, QString username, QString password);
-        //QJsonObject login(QString username, QString password);
-        //QJsonArray getItem(QString keyword);
+        QJsonObject login(QString username, QString password);
+        QJsonArray getItem(QString keyword);
 
     private:
         QString webserver;
