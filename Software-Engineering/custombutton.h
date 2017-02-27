@@ -12,6 +12,9 @@ public slots:
     void getUserText(QString userText);
     void getPassText(QString newPass);
     void getPassConfirmText(QString passConfirmText);
+    void getEmailText(QString emailText);
+    void getFirstText(QString firstText);
+    void getLastText(QString lastText);
 signals:
     void requestText();
 

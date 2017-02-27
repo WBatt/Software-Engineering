@@ -22,11 +22,11 @@ public:
     App(App const&) = delete;
     void operator=(App const&) = delete;
 
-    int Execute(int argc, char* argv[]);
+    int Execute(QApplication& qapp);
     static App* getInstance();
     Api restAPI;
     UserInfo user;
-    MainWindow* w;
+    MainWindow w;
 private:
     static App* _instance;
 };

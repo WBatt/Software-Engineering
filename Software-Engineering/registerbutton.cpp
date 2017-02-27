@@ -21,7 +21,7 @@ void RegisterButton::ClickBehavior()
     {
         qDebug() << "Password mismatch" << endl;
         //display register error message
-        App::getInstance()->w->registerShowError("Password does not match");
+        App::getInstance()->w.registerShowError("Password does not match");
     }
 
 }

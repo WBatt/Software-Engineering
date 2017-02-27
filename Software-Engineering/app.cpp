@@ -6,7 +6,7 @@
 using namespace std;
 
 //declaration of static variables
-App* App::_instance = new App();
+App* App::_instance = NULL;
 
 //once constructed, any other app initializations will just be deleted
 App::App()
@@ -19,6 +19,7 @@ App::App()
     {
         delete this;
     }
+
 }
 
 
@@ -26,21 +27,24 @@ App::App()
 use this to reference anything like user data or product data
 made _instance private so there wouldn't be a chance it could be accidentally deleted/overwritten
 */
-App* App::getInstance(){return _instance;}
+App* App::getInstance()
+{
+    if(_instance == NULL) _instance = new App();
+    return _instance;
+}
 
 
 /*main entry point for application
 GUI team tweak stuff here versus throwing it into the main.cpp*/
-int App::Execute(int argc, char* argv[])
+int App::Execute(QApplication& qapp)
 {
+    //some obligatory unused call for qapp to get rid of unreferenced warning
+    //since we arent calling "qapp = ..." or "... = qapp"
+    Q_UNUSED(qapp);
     //initialize the webserver address
     restAPI.init();
-    //initialize the application window
-    QApplication a(argc, argv);
-    //initialize window contents
-    w = new MainWindow();
     //show main window in the main view
-    w->show();
+    w.show();
 
-    return a.exec();
+    return qapp.exec();
 }

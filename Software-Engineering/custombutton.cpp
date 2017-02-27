@@ -23,3 +23,15 @@ void CustomButton::getPassConfirmText(QString passConfirmText)
 {
     App::getInstance()->user.setPassConfirm(passConfirmText);
 }
+void CustomButton::getEmailText(QString emailText)
+{
+    App::getInstance()->user.setEmail(emailText);
+}
+void CustomButton::getFirstText(QString firstText)
+{
+    App::getInstance()->user.setFirstName(firstText);
+}
+void CustomButton::getLastText(QString lastText)
+{
+    App::getInstance()->user.setLastName(lastText);
+}

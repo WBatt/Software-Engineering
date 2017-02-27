@@ -26,29 +26,49 @@ bool UserInfo::loginUser()
         //save token
         token = attempt["token"].toString();
         //change the page to the dashboard, until then im rerouting home
-        App::getInstance()->w->changePage(App::EP_HOME);
+        App::getInstance()->w.changePage(App::EP_HOME);
         return true;
     }
     //else failed so display error message
-    App::getInstance()->w->loginShowError(attempt["message"].toString());
+    App::getInstance()->w.loginShowError(attempt["message"].toString());
     return false;
 }
 bool UserInfo::registerUser()
 {
     //server api call to add user to db
-    QJsonObject response = App::getInstance()->restAPI.register_user(username, username, password);
+    QJsonObject response = App::getInstance()->restAPI.register_user(email, username, password);
 
     qDebug() << response["message"].toString() << endl;
     if(!response["success"].toBool())
     {
-        App::getInstance()->w->registerShowError(response["message"].toString());
+        App::getInstance()->w.registerShowError(response["message"].toString());
         return false;
     }
 
     //switch page to *dashboard* rerouting to home page
-    App::getInstance()->w->changePage(App::EP_HOME);
+    App::getInstance()->w.changePage(App::EP_HOME);
     return true;
 }
+
+QString UserInfo::getFirstName()
+{
+    return firstName;
+}
+void UserInfo::setFirstName(QString newFirst)
+{
+    firstName = newFirst;
+    qDebug() << "SET FIRST NAME TO " << firstName;
+}
+QString UserInfo::getLastName()
+{
+    return lastName;
+}
+void UserInfo::setLastName(QString newLast)
+{
+    lastName = newLast;
+    qDebug() << "SET LAST NAME TO " << lastName;
+}
+
 QString UserInfo::getUsername()
 {
     return username;
@@ -79,4 +99,18 @@ void UserInfo::setPassConfirm(QString newPC)
 {
     passConfirm = newPC;
     qDebug() << "SET PASSWORD CONFIRM TO " << passConfirm;
+}
+
+QString UserInfo::getEmail()
+{
+    return email;
+}
+void UserInfo::setEmail(QString newEmail)
+{
+    email = newEmail;
+    qDebug() << "SET EMAIL TO " << email;
+}
+QString UserInfo::getToken()
+{
+    return token;
 }

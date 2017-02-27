@@ -690,7 +690,7 @@ QLabel
      <x>0</x>
      <y>0</y>
      <width>800</width>
-     <height>22</height>
+     <height>21</height>
     </rect>
    </property>
   </widget>
@@ -735,6 +735,7 @@ QLabel
     <slot>getPassText(QString)</slot>
     <slot>getPassConfirmText(QString)</slot>
     <slot>getUserText(QString)</slot>
+    <slot>getEmailText(QString)</slot>
    </slots>
   </customwidget>
  </customwidgets>
@@ -783,8 +784,8 @@ QLabel
      <y>407</y>
     </hint>
     <hint type="destinationlabel">
-     <x>230</x>
-     <y>303</y>
+     <x>407</x>
+     <y>289</y>
     </hint>
    </hints>
   </connection>
@@ -795,8 +796,8 @@ QLabel
    <slot>getUserText(QString)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>534</x>
-     <y>300</y>
+     <x>613</x>
+     <y>289</y>
     </hint>
     <hint type="destinationlabel">
      <x>242</x>
@@ -897,6 +898,38 @@ QLabel
     <hint type="destinationlabel">
      <x>337</x>
      <y>358</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>pushButton_2</sender>
+   <signal>requestText()</signal>
+   <receiver>lineEdit_email</receiver>
+   <slot>handleRequest()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>225</x>
+     <y>414</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>233</x>
+     <y>314</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>lineEdit_username</sender>
+   <signal>sendText(QString)</signal>
+   <receiver>pushButton_2</receiver>
+   <slot>getEmailText(QString)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>484</x>
+     <y>281</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>249</x>
+     <y>419</y>
     </hint>
    </hints>
   </connection>
