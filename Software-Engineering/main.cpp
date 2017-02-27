@@ -1,19 +1,15 @@
+
 #include "mainwindow.h"
+#include "app.h"
 #include <QApplication>
-#include <QDebug>
-
-
-#include <QtCore/QCoreApplication>
-
 using namespace std;
-
 
 int main(int argc, char *argv[])
 {
+    //DO NOT MODIFY THIS FUNCTION ANYMORE!
+    //use app's execute function instead
+
+    //initialize the application window
     QApplication a(argc, argv);
-    MainWindow w;
-    w.show();
-
-    return a.exec();
-
+    return App::getInstance()->Execute(a);
 }

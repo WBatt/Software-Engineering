@@ -8,7 +8,15 @@ class CustomButton : public QPushButton
 public:
     CustomButton(QWidget *parent = 0);
 public slots:
-    void changeName();
+    virtual void ClickBehavior() = 0;
+    void getUserText(QString userText);
+    void getPassText(QString newPass);
+    void getPassConfirmText(QString passConfirmText);
+    void getEmailText(QString emailText);
+    void getFirstText(QString firstText);
+    void getLastText(QString lastText);
+signals:
+    void requestText();
 
 private:
 

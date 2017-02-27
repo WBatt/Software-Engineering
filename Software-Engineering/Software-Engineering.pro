@@ -5,7 +5,7 @@
 #-------------------------------------------------
 
 QT       += core gui
-QT       += sql
+QT       += network
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
 TARGET = Software-Engineering
@@ -25,13 +25,29 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 SOURCES += main.cpp\
         mainwindow.cpp \
-    custombutton.cpp
+    custombutton.cpp \
+    createaccount.cpp \
+    app.cpp \
+    submitbutton.cpp \
+    userinfo.cpp \
+    customlineedit.cpp \
+    api.cpp \
+    registerbutton.cpp
 
 HEADERS  += mainwindow.h \
     custombutton.h \
-    database.h
+    database.h \
+    createaccount.h \
+    app.h \
+    submitbutton.h \
+    userinfo.h \
+    customlineedit.h \
+    api.h \
+    registerbutton.h
 
-FORMS    += mainwindow.ui
+FORMS    += mainwindow.ui \
+    createaccount.ui
 
 RESOURCES += \
     resources.qrc
+

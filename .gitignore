@@ -1,3 +1,5 @@
 database.h
 build*/
 *.user
+node_modules/
+*.log

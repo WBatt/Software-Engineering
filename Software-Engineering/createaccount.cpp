@@ -1,6 +1,5 @@
 #include "createaccount.h"
 #include "ui_createaccount.h"
-
 CreateAccount::CreateAccount(QWidget *parent) :
     QDialog(parent),
     ui(new Ui::CreateAccount)
