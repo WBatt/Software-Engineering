@@ -155,7 +155,7 @@ QLabel
              <item>
               <layout class="QHBoxLayout" name="horizontalLayout_5">
                <item>
-                <widget class="CustomLineEdit" name="lineEdit_username">
+                <widget class="CustomLineEdit" name="lineEdit_email_2">
                  <property name="minimumSize">
                   <size>
                    <width>0</width>
@@ -174,7 +174,7 @@ QLabel
                   <string/>
                  </property>
                  <property name="placeholderText">
-                  <string>Username</string>
+                  <string>Email</string>
                  </property>
                 </widget>
                </item>
@@ -183,19 +183,42 @@ QLabel
              <item>
               <layout class="QHBoxLayout" name="horizontalLayout_6">
                <item>
-                <widget class="CustomLineEdit" name="lineEdit_email">
+                <widget class="CustomLineEdit" name="lineEdit_firstName">
                  <property name="minimumSize">
                   <size>
                    <width>0</width>
                    <height>25</height>
                   </size>
                  </property>
+                 <property name="font">
+                  <font>
+                   <pointsize>12</pointsize>
+                  </font>
+                 </property>
                  <property name="placeholderText">
-                  <string>Email</string>
+                  <string>First Name</string>
                  </property>
                 </widget>
                </item>
               </layout>
+             </item>
+             <item>
+              <widget class="QLineEdit" name="lineEdit_lastName">
+               <property name="minimumSize">
+                <size>
+                 <width>0</width>
+                 <height>25</height>
+                </size>
+               </property>
+               <property name="font">
+                <font>
+                 <pointsize>12</pointsize>
+                </font>
+               </property>
+               <property name="placeholderText">
+                <string>Last Name</string>
+               </property>
+              </widget>
              </item>
              <item>
               <layout class="QHBoxLayout" name="horizontalLayout_7">
@@ -690,7 +713,7 @@ QLabel
      <x>0</x>
      <y>0</y>
      <width>800</width>
-     <height>21</height>
+     <height>17</height>
     </rect>
    </property>
   </widget>
@@ -776,7 +799,7 @@ QLabel
   <connection>
    <sender>pushButton_2</sender>
    <signal>requestText()</signal>
-   <receiver>lineEdit_username</receiver>
+   <receiver>lineEdit_email_2</receiver>
    <slot>handleRequest()</slot>
    <hints>
     <hint type="sourcelabel">
@@ -790,7 +813,7 @@ QLabel
    </hints>
   </connection>
   <connection>
-   <sender>lineEdit_username</sender>
+   <sender>lineEdit_email_2</sender>
    <signal>sendText(QString)</signal>
    <receiver>pushButton_2</receiver>
    <slot>getUserText(QString)</slot>
@@ -904,7 +927,7 @@ QLabel
   <connection>
    <sender>pushButton_2</sender>
    <signal>requestText()</signal>
-   <receiver>lineEdit_email</receiver>
+   <receiver>lineEdit_firstName</receiver>
    <slot>handleRequest()</slot>
    <hints>
     <hint type="sourcelabel">
@@ -918,7 +941,7 @@ QLabel
    </hints>
   </connection>
   <connection>
-   <sender>lineEdit_username</sender>
+   <sender>lineEdit_email_2</sender>
    <signal>sendText(QString)</signal>
    <receiver>pushButton_2</receiver>
    <slot>getEmailText(QString)</slot>
