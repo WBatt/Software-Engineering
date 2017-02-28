@@ -26,7 +26,6 @@ DEFINES += QT_DEPRECATED_WARNINGS
 SOURCES += main.cpp\
         mainwindow.cpp \
     custombutton.cpp \
-    createaccount.cpp \
     app.cpp \
     submitbutton.cpp \
     userinfo.cpp \
@@ -37,7 +36,6 @@ SOURCES += main.cpp\
 HEADERS  += mainwindow.h \
     custombutton.h \
     database.h \
-    createaccount.h \
     app.h \
     submitbutton.h \
     userinfo.h \
@@ -46,8 +44,7 @@ HEADERS  += mainwindow.h \
     registerbutton.h \
     database.h
 
-FORMS    += mainwindow.ui \
-    createaccount.ui
+FORMS    += mainwindow.ui
 
 RESOURCES += \
     resources.qrc
