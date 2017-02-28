@@ -43,7 +43,8 @@ HEADERS  += mainwindow.h \
     userinfo.h \
     customlineedit.h \
     api.h \
-    registerbutton.h
+    registerbutton.h \
+    database.h
 
 FORMS    += mainwindow.ui \
     createaccount.ui
