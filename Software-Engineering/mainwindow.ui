@@ -44,7 +44,18 @@ QPushButton:pressed
 	border-image: url(:/images/Food_logo.png);
 }
 
+#login_logo
+{
+	border-image: url(:/images/Food_logo.png);
+}
+
 #createAccountForm
+{
+	background: rgba(0,0,0,70);
+	border-radius: 10px;
+}
+
+#loginForm
 {
 	background: rgba(0,0,0,70);
 	border-radius: 10px;
@@ -68,10 +79,23 @@ QLabel
        <string notr="true"/>
       </property>
       <property name="currentIndex">
-       <number>0</number>
+       <number>1</number>
       </property>
       <widget class="QWidget" name="page_CreateAcct">
        <layout class="QVBoxLayout" name="verticalLayout">
+        <item>
+         <spacer name="verticalSpacer">
+          <property name="orientation">
+           <enum>Qt::Vertical</enum>
+          </property>
+          <property name="sizeHint" stdset="0">
+           <size>
+            <width>20</width>
+            <height>40</height>
+           </size>
+          </property>
+         </spacer>
+        </item>
         <item>
          <layout class="QHBoxLayout" name="horizontalLayout">
           <property name="sizeConstraint">
@@ -153,9 +177,71 @@ QLabel
               </widget>
              </item>
              <item>
-              <layout class="QHBoxLayout" name="horizontalLayout_5">
+              <layout class="QHBoxLayout" name="horizontalLayout_6">
+               <item>
+                <widget class="CustomLineEdit" name="lineEdit_firstName">
+                 <property name="minimumSize">
+                  <size>
+                   <width>0</width>
+                   <height>25</height>
+                  </size>
+                 </property>
+                 <property name="font">
+                  <font>
+                   <pointsize>12</pointsize>
+                  </font>
+                 </property>
+                 <property name="placeholderText">
+                  <string>First Name</string>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <widget class="CustomLineEdit" name="lineEdit_lastName">
+                 <property name="minimumSize">
+                  <size>
+                   <width>0</width>
+                   <height>25</height>
+                  </size>
+                 </property>
+                 <property name="font">
+                  <font>
+                   <pointsize>12</pointsize>
+                  </font>
+                 </property>
+                 <property name="placeholderText">
+                  <string>Last Name</string>
+                 </property>
+                </widget>
+               </item>
+              </layout>
+             </item>
+             <item>
+              <layout class="QHBoxLayout" name="horizontalLayout_9">
                <item>
                 <widget class="CustomLineEdit" name="lineEdit_username">
+                 <property name="minimumSize">
+                  <size>
+                   <width>0</width>
+                   <height>25</height>
+                  </size>
+                 </property>
+                 <property name="font">
+                  <font>
+                   <pointsize>12</pointsize>
+                  </font>
+                 </property>
+                 <property name="placeholderText">
+                  <string>Username</string>
+                 </property>
+                </widget>
+               </item>
+              </layout>
+             </item>
+             <item>
+              <layout class="QHBoxLayout" name="horizontalLayout_5">
+               <item>
+                <widget class="CustomLineEdit" name="lineEdit_email_2">
                  <property name="minimumSize">
                   <size>
                    <width>0</width>
@@ -172,23 +258,6 @@ QLabel
                  </property>
                  <property name="text">
                   <string/>
-                 </property>
-                 <property name="placeholderText">
-                  <string>Username</string>
-                 </property>
-                </widget>
-               </item>
-              </layout>
-             </item>
-             <item>
-              <layout class="QHBoxLayout" name="horizontalLayout_6">
-               <item>
-                <widget class="CustomLineEdit" name="lineEdit_email">
-                 <property name="minimumSize">
-                  <size>
-                   <width>0</width>
-                   <height>25</height>
-                  </size>
                  </property>
                  <property name="placeholderText">
                   <string>Email</string>
@@ -306,19 +375,6 @@ QLabel
          </layout>
         </item>
         <item>
-         <spacer name="verticalSpacer">
-          <property name="orientation">
-           <enum>Qt::Vertical</enum>
-          </property>
-          <property name="sizeHint" stdset="0">
-           <size>
-            <width>20</width>
-            <height>40</height>
-           </size>
-          </property>
-         </spacer>
-        </item>
-        <item>
          <spacer name="verticalSpacer_4">
           <property name="orientation">
            <enum>Qt::Vertical</enum>
@@ -352,80 +408,195 @@ QLabel
        </layout>
       </widget>
       <widget class="QWidget" name="page_Login">
-       <widget class="SubmitButton" name="pushButton_login_login">
-        <property name="enabled">
-         <bool>true</bool>
-        </property>
-        <property name="geometry">
-         <rect>
-          <x>260</x>
-          <y>310</y>
-          <width>75</width>
-          <height>23</height>
-         </rect>
-        </property>
-        <property name="text">
-         <string>Login</string>
-        </property>
-       </widget>
-       <widget class="QPushButton" name="pushButton_login_cancel">
-        <property name="geometry">
-         <rect>
-          <x>380</x>
-          <y>310</y>
-          <width>75</width>
-          <height>23</height>
-         </rect>
-        </property>
-        <property name="text">
-         <string>Cancel</string>
-        </property>
-       </widget>
-       <widget class="CustomLineEdit" name="lineEdit_login_user">
-        <property name="geometry">
-         <rect>
-          <x>260</x>
-          <y>150</y>
-          <width>191</width>
-          <height>31</height>
-         </rect>
-        </property>
-        <property name="placeholderText">
-         <string>username</string>
-        </property>
-       </widget>
-       <widget class="CustomLineEdit" name="lineEdit_login_pass">
-        <property name="geometry">
-         <rect>
-          <x>260</x>
-          <y>190</y>
-          <width>191</width>
-          <height>31</height>
-         </rect>
-        </property>
-        <property name="placeholderText">
-         <string>password</string>
-        </property>
-       </widget>
-       <widget class="QLabel" name="label_login_error">
-        <property name="enabled">
-         <bool>true</bool>
-        </property>
-        <property name="geometry">
-         <rect>
-          <x>260</x>
-          <y>240</y>
-          <width>191</width>
-          <height>51</height>
-         </rect>
-        </property>
-        <property name="text">
-         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; color:#ff0000;&quot;&gt;error&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-        </property>
-        <property name="alignment">
-         <set>Qt::AlignHCenter|Qt::AlignTop</set>
-        </property>
-       </widget>
+       <layout class="QVBoxLayout" name="verticalLayout_5">
+        <item>
+         <spacer name="verticalSpacer_10">
+          <property name="orientation">
+           <enum>Qt::Vertical</enum>
+          </property>
+          <property name="sizeHint" stdset="0">
+           <size>
+            <width>20</width>
+            <height>40</height>
+           </size>
+          </property>
+         </spacer>
+        </item>
+        <item>
+         <layout class="QHBoxLayout" name="horizontalLayout_10">
+          <item>
+           <widget class="QLabel" name="login_logo">
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
+            <property name="minimumSize">
+             <size>
+              <width>150</width>
+              <height>150</height>
+             </size>
+            </property>
+            <property name="text">
+             <string/>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </item>
+        <item>
+         <layout class="QHBoxLayout" name="horizontalLayout_11">
+          <item>
+           <widget class="QWidget" name="loginForm" native="true">
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
+            <property name="minimumSize">
+             <size>
+              <width>350</width>
+              <height>200</height>
+             </size>
+            </property>
+            <layout class="QVBoxLayout" name="verticalLayout_8">
+             <property name="topMargin">
+              <number>20</number>
+             </property>
+             <item>
+              <layout class="QHBoxLayout" name="horizontalLayout_17">
+               <item>
+                <widget class="CustomLineEdit" name="lineEdit_login_user">
+                 <property name="minimumSize">
+                  <size>
+                   <width>0</width>
+                   <height>25</height>
+                  </size>
+                 </property>
+                 <property name="font">
+                  <font>
+                   <pointsize>12</pointsize>
+                  </font>
+                 </property>
+                 <property name="placeholderText">
+                  <string>username</string>
+                 </property>
+                </widget>
+               </item>
+              </layout>
+             </item>
+             <item>
+              <layout class="QHBoxLayout" name="horizontalLayout_16">
+               <item>
+                <widget class="CustomLineEdit" name="lineEdit_login_pass">
+                 <property name="minimumSize">
+                  <size>
+                   <width>0</width>
+                   <height>25</height>
+                  </size>
+                 </property>
+                 <property name="font">
+                  <font>
+                   <pointsize>12</pointsize>
+                  </font>
+                 </property>
+                 <property name="placeholderText">
+                  <string>password</string>
+                 </property>
+                </widget>
+               </item>
+              </layout>
+             </item>
+             <item>
+              <layout class="QHBoxLayout" name="horizontalLayout_18">
+               <item>
+                <widget class="SubmitButton" name="pushButton_login_login">
+                 <property name="enabled">
+                  <bool>true</bool>
+                 </property>
+                 <property name="minimumSize">
+                  <size>
+                   <width>0</width>
+                   <height>25</height>
+                  </size>
+                 </property>
+                 <property name="font">
+                  <font>
+                   <pointsize>12</pointsize>
+                  </font>
+                 </property>
+                 <property name="text">
+                  <string>Login</string>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <spacer name="horizontalSpacer_7">
+                 <property name="orientation">
+                  <enum>Qt::Horizontal</enum>
+                 </property>
+                 <property name="sizeHint" stdset="0">
+                  <size>
+                   <width>40</width>
+                   <height>20</height>
+                  </size>
+                 </property>
+                </spacer>
+               </item>
+               <item>
+                <widget class="QPushButton" name="pushButton_login_cancel">
+                 <property name="minimumSize">
+                  <size>
+                   <width>0</width>
+                   <height>25</height>
+                  </size>
+                 </property>
+                 <property name="font">
+                  <font>
+                   <pointsize>12</pointsize>
+                  </font>
+                 </property>
+                 <property name="text">
+                  <string>Cancel</string>
+                 </property>
+                </widget>
+               </item>
+              </layout>
+             </item>
+            </layout>
+           </widget>
+          </item>
+         </layout>
+        </item>
+        <item>
+         <spacer name="verticalSpacer_8">
+          <property name="orientation">
+           <enum>Qt::Vertical</enum>
+          </property>
+          <property name="sizeHint" stdset="0">
+           <size>
+            <width>20</width>
+            <height>40</height>
+           </size>
+          </property>
+         </spacer>
+        </item>
+        <item>
+         <widget class="QLabel" name="label_login_error">
+          <property name="enabled">
+           <bool>true</bool>
+          </property>
+          <property name="text">
+           <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; color:#ff0000;&quot;&gt;error&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+          </property>
+          <property name="alignment">
+           <set>Qt::AlignHCenter|Qt::AlignTop</set>
+          </property>
+         </widget>
+        </item>
+       </layout>
       </widget>
       <widget class="QWidget" name="Home">
        <layout class="QGridLayout" name="gridLayout_4">
@@ -1023,19 +1194,10 @@ QLabel
      <x>0</x>
      <y>0</y>
      <width>800</width>
-     <height>21</height>
+     <height>17</height>
     </rect>
    </property>
   </widget>
-  <widget class="QToolBar" name="mainToolBar">
-   <attribute name="toolBarArea">
-    <enum>TopToolBarArea</enum>
-   </attribute>
-   <attribute name="toolBarBreak">
-    <bool>false</bool>
-   </attribute>
-  </widget>
-  <widget class="QStatusBar" name="statusBar"/>
  </widget>
  <layoutdefault spacing="6" margin="11"/>
  <customwidgets>
@@ -1069,6 +1231,8 @@ QLabel
     <slot>getPassConfirmText(QString)</slot>
     <slot>getUserText(QString)</slot>
     <slot>getEmailText(QString)</slot>
+    <slot>getFirstText(QString)</slot>
+    <slot>getLastText(QString)</slot>
    </slots>
   </customwidget>
  </customwidgets>
@@ -1081,12 +1245,12 @@ QLabel
    <slot>handleRequest()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>193</x>
-     <y>404</y>
+     <x>186</x>
+     <y>458</y>
     </hint>
     <hint type="destinationlabel">
-     <x>194</x>
-     <y>382</y>
+     <x>186</x>
+     <y>399</y>
     </hint>
    </hints>
   </connection>
@@ -1097,44 +1261,44 @@ QLabel
    <slot>handleRequest()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>207</x>
-     <y>404</y>
+     <x>203</x>
+     <y>458</y>
     </hint>
     <hint type="destinationlabel">
-     <x>212</x>
-     <y>334</y>
+     <x>203</x>
+     <y>365</y>
     </hint>
    </hints>
   </connection>
   <connection>
    <sender>pushButton_2</sender>
    <signal>requestText()</signal>
-   <receiver>lineEdit_username</receiver>
+   <receiver>lineEdit_email_2</receiver>
    <slot>handleRequest()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>226</x>
-     <y>407</y>
+     <x>217</x>
+     <y>458</y>
     </hint>
     <hint type="destinationlabel">
-     <x>407</x>
-     <y>289</y>
+     <x>217</x>
+     <y>331</y>
     </hint>
    </hints>
   </connection>
   <connection>
-   <sender>lineEdit_username</sender>
+   <sender>lineEdit_email_2</sender>
    <signal>sendText(QString)</signal>
    <receiver>pushButton_2</receiver>
-   <slot>getUserText(QString)</slot>
+   <slot>getEmailText(QString)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>613</x>
-     <y>289</y>
+     <x>514</x>
+     <y>351</y>
     </hint>
     <hint type="destinationlabel">
-     <x>242</x>
-     <y>414</y>
+     <x>252</x>
+     <y>458</y>
     </hint>
    </hints>
   </connection>
@@ -1145,12 +1309,12 @@ QLabel
    <slot>getPassText(QString)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>549</x>
-     <y>333</y>
+     <x>499</x>
+     <y>388</y>
     </hint>
     <hint type="destinationlabel">
-     <x>241</x>
-     <y>408</y>
+     <x>252</x>
+     <y>458</y>
     </hint>
    </hints>
   </connection>
@@ -1161,12 +1325,12 @@ QLabel
    <slot>getPassConfirmText(QString)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>576</x>
-     <y>373</y>
+     <x>484</x>
+     <y>421</y>
     </hint>
     <hint type="destinationlabel">
-     <x>249</x>
-     <y>400</y>
+     <x>252</x>
+     <y>458</y>
     </hint>
    </hints>
   </connection>
@@ -1237,16 +1401,16 @@ QLabel
   <connection>
    <sender>pushButton_2</sender>
    <signal>requestText()</signal>
-   <receiver>lineEdit_email</receiver>
+   <receiver>lineEdit_firstName</receiver>
    <slot>handleRequest()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>225</x>
-     <y>414</y>
+     <x>244</x>
+     <y>458</y>
     </hint>
     <hint type="destinationlabel">
-     <x>233</x>
-     <y>314</y>
+     <x>244</x>
+     <y>289</y>
     </hint>
    </hints>
   </connection>
@@ -1254,15 +1418,79 @@ QLabel
    <sender>lineEdit_username</sender>
    <signal>sendText(QString)</signal>
    <receiver>pushButton_2</receiver>
-   <slot>getEmailText(QString)</slot>
+   <slot>getUserText(QString)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>484</x>
+     <x>530</x>
+     <y>317</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>252</x>
+     <y>458</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>pushButton_2</sender>
+   <signal>requestText()</signal>
+   <receiver>lineEdit_username</receiver>
+   <slot>handleRequest()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>229</x>
+     <y>438</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>232</x>
+     <y>314</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>pushButton_2</sender>
+   <signal>requestText()</signal>
+   <receiver>lineEdit_lastName</receiver>
+   <slot>handleRequest()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>248</x>
+     <y>449</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>410</x>
+     <y>281</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>lineEdit_firstName</sender>
+   <signal>sendText(QString)</signal>
+   <receiver>pushButton_2</receiver>
+   <slot>getFirstText(QString)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>366</x>
+     <y>278</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>245</x>
+     <y>448</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>lineEdit_lastName</sender>
+   <signal>sendText(QString)</signal>
+   <receiver>pushButton_2</receiver>
+   <slot>getLastText(QString)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>540</x>
      <y>281</y>
     </hint>
     <hint type="destinationlabel">
-     <x>249</x>
-     <y>419</y>
+     <x>243</x>
+     <y>453</y>
     </hint>
    </hints>
   </connection>
