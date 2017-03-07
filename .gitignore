@@ -3,3 +3,4 @@ build*/
 *.user
 node_modules/
 *.log
+config.js
