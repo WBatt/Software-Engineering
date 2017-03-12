@@ -55,3 +55,4 @@ app.listen(port);
 mongoose.connect(config.database);
 
 var User = require('./app/models/user');
+var Item = require('./app/models/item');
