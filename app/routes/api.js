@@ -1,7 +1,8 @@
 var User = require('../models/user')
+var Item = require('../models/item')
 
 module.exports = function(app, express){
-	
+
 	//get an instance of the express router
 	var apiRouter = express.Router();
 
@@ -44,11 +45,11 @@ module.exports = function(app, express){
 				//duplicate entry
 				if(err.code == 11000)
 					return res.json({success:false, message: 'A user with that username already exists.'});
-					
+
 					else
 						return res.send(err);
 					}
-				
+
 
 					res.json({success: true, message: 'User created!'});
 				});
@@ -56,7 +57,7 @@ module.exports = function(app, express){
 
 
 	apiRouter.post('/login', function(req, res){
-		
+
 		var query = User.findOne({username: req.body.username});
 		query.select("username password token");
 		var promise = query.exec();
@@ -110,7 +111,7 @@ module.exports = function(app, express){
 		})
 		//update the user with this id
 		//(accessed at PUT http://localhost:8080/api/users/:user_id)
-		
+
 		.put(function(req, res){
 
 			//use our model to find the user we want
@@ -141,7 +142,7 @@ module.exports = function(app, express){
 		.delete(function(req,res) {
 			User.remove({
 				_id: req.params.user_id
-			
+
 			}, function(err,user){
 				if(err)
 					res.json({"err": err});
@@ -150,7 +151,62 @@ module.exports = function(app, express){
 			});
 		});
 
+/*
+//This is for the item route
+//route to items
+apiRouter.route('/items')
+//create an item accessed at POST http://localhost:8080/api/item
+.post(function(req,res){
+//create an instance of an item model
+var item = new Item();
+//set the items name, description, and expiration date
+item.name = req.body.name;
+item.description = req.body.description;
+item.exp_date = req.body.exp_date;
+
+//save the item and check for errors
+item.save(function(err){
+	if(err)
+		return res.json({"err":err });
+  else
+		res.json({success:true, message: "Item created!"});
+});
+})
+
+//get all items
+.get(function(req,res){
+	Item.find(function(err, items){
+		if(err)
+			return res.json({"err": err});
+		else
+			res.json(items);
+	});
+});
+
+//route to get an item name
+apiRouter.route('/items/:name')
+//get the item by name
+		//accessed at GET http://localhost:8080/api/items/:name)
+.get(function(req,res){
+	Item.find({ 'item.name':req.params.name  }, function(err,user){
+		if(err)
+				res.json({"err": err});
+		//return the item
+			res.json(item);
+	});
+});
+
+apiRouter.route('/items/:item_id')
+.delete(function(req,res){
+	Item.remove({
+		_id: req.params.item_id
+	}, function(err,item){
+		if(err)
+			res.json({"err":err});
+
+			res.json({message: 'Successfully deleted'});
+	});
+});
+*/
 	return apiRouter;
-};					
-
-
+};
