@@ -50,8 +50,7 @@ app.use('/api',apiRoutes);
 //START THE SERVER
 //==========================================
 app.listen(port);
-
+console.log("app is on localhost:" + port)
 //connect to our database (hosted on modulus.io)
 mongoose.connect(config.database);
 
-var User = require('./app/models/user');
