@@ -151,11 +151,12 @@ module.exports = function(app, express){
 			});
 		});
 
-/*
+
 //This is for the item route
 //route to items
 apiRouter.route('/items')
 //create an item accessed at POST http://localhost:8080/api/item
+/*
 .post(function(req,res){
 //create an instance of an item model
 var item = new Item();
@@ -172,7 +173,7 @@ item.save(function(err){
 		res.json({success:true, message: "Item created!"});
 });
 })
-
+*/
 //get all items
 .get(function(req,res){
 	Item.find(function(err, items){
@@ -188,7 +189,7 @@ apiRouter.route('/items/:name')
 //get the item by name
 		//accessed at GET http://localhost:8080/api/items/:name)
 .get(function(req,res){
-	Item.find({ 'item.name':req.params.name  }, function(err,user){
+	Item.find({ "item.name":req.params.name  }, function(err,user){
 		if(err)
 				res.json({"err": err});
 		//return the item
@@ -207,6 +208,6 @@ apiRouter.route('/items/:item_id')
 			res.json({message: 'Successfully deleted'});
 	});
 });
-*/
+
 	return apiRouter;
 };
