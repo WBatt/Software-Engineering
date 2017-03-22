@@ -1,0 +1,35 @@
+<!doctype HTML>
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+	<link rel="stylesheet" type="text/css" href="app/styles/styles.css">
+
+    <title>HackySnack Login</title>
+
+	<script type="text/javascript" charset="utf-8" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.2/angular.js"></script>
+	<script type="text/javascript" charset="utf-8" src="app/app.js"></script>
+  </head>
+  <body ng-app="myApp" ng-controller="MainController as main">
+
+    <div id="menuBar">
+        Filter: <input type="text" ng-model="name" />
+    </div>
+
+	<div id="mainCenter">
+	  <h3>Sign Up</h3>
+    <form class="" action="/api/users" method="post">
+      <input type="text" name="name" value="">
+      <input type="text" name="username" value="">
+      <input type="password" name="password" value="">
+      <input type="submit" name="" value="Sign Up">
+    </form>
+	  <h3>Login</h3>
+    <form class="" action="/api/login" method="post">
+      <input type="text" name="username" value="">
+      <input type="password" name="password" value="">
+      <input type="submit" name="login" value="">
+    </form>
+
+	</div>
+  </body>
+</html>

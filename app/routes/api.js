@@ -1,7 +1,7 @@
 var User = require('../models/user')
 var Item = require('../models/item')
 
-module.exports = function(app, express){
+module.exports = function(app, express, passport){
 
 	//get an instance of the express router
 	var apiRouter = express.Router();
@@ -29,30 +29,11 @@ module.exports = function(app, express){
 	//create a user(accessed at POST http://localhost:80/api/user)
 	.post(function(req,res){
 
-		//create a new instance of the User model
-		var user = new User();
-
-		//set the users information(comes from the request)
-		user.name = req.body.name;
-		user.username = req.body.username;
-		user.password = req.body.password;
-		user.token = (Math.random()*1e128).toString(36)
-		user.token_expiration = Date.now() + (36000 * 60 * 24 * 60) // 2 months for now
-
-		//save the user and check for errors
-		user.save(function(err){
-			if(err){
-				//duplicate entry
-				if(err.code == 11000)
-					return res.json({success:false, message: 'A user with that username already exists.'});
-
-					else
-						return res.send(err);
-					}
-
-
-					res.json({success: true, message: 'User created!'});
-				});
+		passport.authenticate('local', {
+			successRedirect: '/',
+			failureRedirect: '/login',
+			failureFlash: true
+		})
 	});
 
 
