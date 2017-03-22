@@ -53,4 +53,3 @@ app.listen(port);
 console.log("app is on localhost:" + port)
 //connect to our database (hosted on modulus.io)
 mongoose.connect(config.database);
-
