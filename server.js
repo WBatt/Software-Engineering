@@ -18,7 +18,7 @@ var port			= config.port;				//set the port for our app
 // use body parser so we can grab information from POST requests
 app.use(bodyParser.urlencoded({extended:true}));
 app.use(bodyParser.json());
-app.use(express.static(__dirname + '/public'));
+app.use(express.static(__dirname + '/public/app'));
 
 //configure our app to handle CORS requests
 app.use(function(req,res,next){
@@ -37,11 +37,11 @@ app.use(morgan('combined', {stream: accessLogStream}));
 
 //get an instance of the express router
 var apiRoutes = require('./app/routes/api')(app, express);
-
+require('./app/routes/public')(app, express);
 // Main catchall route
-app.get("*", function(req, res){
-	res.sendFile(path.join(__dirname + '/public/app/views/index.html'));
-});
+//app.get("*", function(req, res){
+//	res.sendFile(path.join(__dirname + '/public/app/views/index.html'));
+//});
 
 //REGISTER OUR ROUTES -------------------
 //all of our routes will be prefixed with /api
