@@ -137,7 +137,7 @@ module.exports = function(app, express, passport){
 //route to items
 apiRouter.route('/items')
 //create an item accessed at POST http://localhost:8080/api/item
-/*
+
 .post(function(req,res){
 //create an instance of an item model
 var item = new Item();
@@ -154,7 +154,7 @@ item.save(function(err){
 		res.json({success:true, message: "Item created!"});
 });
 })
-*/
+
 //get all items
 .get(function(req,res){
 	Item.find(function(err, items){
