@@ -154,11 +154,12 @@ module.exports = function(app, express){
 
 //This is for the item route
 //route to items
-apiRouter.route('/items')
+//apiRouter.route('/items')
+
 //create an item accessed at POST http://localhost:8080/api/item
 
-.post(function(req,res){
 //create an instance of an item model
+apiRouter.post("/items", function(req,res){
 var item = new Item();
 //set the items name, description, and expiration date
 item.name = req.body.name;
@@ -172,31 +173,50 @@ item.save(function(err){
   else
 		res.json({success:true, message: "Item created!"});
 });
-})
+
+});
+
 
 //get all items
-.get(function(req,res){
-	Item.find(function(err, items){
+apiRouter.get("/items", function(req,res){
+	console.log("hello")
+	Item.find({},function(err, items){
 		if(err)
 			return res.json({"err": err});
 		else
 			res.json(items);
 	});
-});
+})
 
-//route to get an item name
-apiRouter.route('/items/:name')
+
 //get the item by name
 		//accessed at GET http://localhost:8080/api/items/:name)
+/*
 .get(function(req,res){
-	Item.find({ "item.name":req.params.name  }, function(err,user){
+	if(req.query.name){
+		console.log("test1")
+		Item.find({ "item.name":req.params.name  }, function(err,user){
 		if(err)
-				res.json({"err": err});
-		//return the item
-			res.json(item);
-	});
-});
+					res.json({"err": err});
+			//return the item
+				res.json(item);
+		});
 
+	}
+	else{
+	//get all items, theres no items
+		Item.find(function(err, items){
+			if(err)
+				return res.json({"err": err});
+			else
+
+				res.json(items);
+			});
+	//res.json({message: 'Nothing to be queried'});
+}
+
+});
+*/
 apiRouter.route('/items/:item_id')
 .delete(function(req,res){
 	Item.remove({
