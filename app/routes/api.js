@@ -176,7 +176,7 @@ item.save(function(err){
 
 });
 
-
+/*
 //get all items
 apiRouter.get("/items", function(req,res){
 	console.log("hello")
@@ -186,24 +186,33 @@ apiRouter.get("/items", function(req,res){
 		else
 			res.json(items);
 	});
-})
-
+});
+*/
 
 //get the item by name
 		//accessed at GET http://localhost:8080/api/items/:name)
-/*
-.get(function(req,res){
+
+apiRouter.get("/items",function(req,res){
 	if(req.query.name){
-		console.log("test1")
-		Item.find({ "item.name":req.params.name  }, function(err,user){
-		if(err)
-					res.json({"err": err});
-			//return the item
+		
+		Item.find({ "name":req.query.name  }, function(err,item){
+		if(item.length != 0){
+			if(err)
+				res.json({"err": err});
+				//return the item
+			else{
+
 				res.json(item);
+	  	}
+		}
+		else{
+			res.json({message: 'Item not found'});
+		}
 		});
 
 	}
 	else{
+		/*
 	//get all items, theres no items
 		Item.find(function(err, items){
 			if(err)
@@ -212,11 +221,12 @@ apiRouter.get("/items", function(req,res){
 
 				res.json(items);
 			});
-	//res.json({message: 'Nothing to be queried'});
+			*/
+	res.json({message: 'Nothing to be queried'});
 }
 
 });
-*/
+
 apiRouter.route('/items/:item_id')
 .delete(function(req,res){
 	Item.remove({
