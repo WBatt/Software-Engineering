@@ -39,9 +39,9 @@ app.use(morgan('combined', {stream: accessLogStream}));
 var apiRoutes = require('./app/routes/api')(app, express);
 
 // Main catchall route
-app.get("*", function(req, res){
-	res.sendFile(path.join(__dirname + '/public/app/views/index.html'));
-});
+//app.get("*", function(req, res){
+//	res.sendFile(path.join(__dirname + '/public/app/views/index.html'));
+//});
 
 //REGISTER OUR ROUTES -------------------
 //all of our routes will be prefixed with /api
