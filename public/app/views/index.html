@@ -14,28 +14,24 @@
   </head>
   <body ng-app="myApp" ng-controller="MainController as main">
 
-    <div id="menuBar">
-        Filter: <input type="text" ng-model="name" />
-    </div>
 
-	<div id="mainCenter">
-	  <h3>Welcome</h3>
-		<ul>
-		<li ng-repeat="item in main.items | filter:name">
-		{{item.item}}
-		<ul><li ng-repeat="ingredient in item.ingredients | filter:name">{{ingredient}}</li></ul>
-		</li>
-		</li>
-	</div>
 
     <!-- Main portion of the body -->
   <div class="container" id="main-body">
     <h1 class="text-center">HackySnack</h1>
-      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt
-    ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
-    laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in
-    voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat
-    non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+    <div id="menuBar">
+        Filter: <input type="text" ng-model="name" />
+    </div>
+
+    <div id="mainCenter">
+      <h3>Welcome</h3>
+      <ul>
+      <li ng-repeat="item in main.items | filter:name">
+      {{item.item}}
+      <ul><li ng-repeat="ingredient in item.ingredients | filter:name">{{ingredient}}</li></ul>
+      </li>
+      </li>
+    </div>
 
     <div class="btn-group " role="group" aria-label="...">
       <button type="button" class="btn btn-default">Login</button>
