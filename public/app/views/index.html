@@ -1,28 +1,46 @@
-<!doctype HTML>
-<html>
+<!DOCTYPE html>
+<html lang="en">
   <head>
-    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
-	<link rel="stylesheet" type="text/css" href="app/styles/styles.css">
-
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>HackySnack</title>
 
-	<script type="text/javascript" charset="utf-8" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.2/angular.js"></script>
-	<script type="text/javascript" charset="utf-8" src="app/app.js"></script>
+    <script type="text/javascript" charset="utf-8" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.2/angular.js"></script>
+  	<script type="text/javascript" charset="utf-8" src="app/app.js"></script>
+    <!-- Bootstrap -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
   </head>
   <body ng-app="myApp" ng-controller="MainController as main">
 
+
+
+    <!-- Main portion of the body -->
+  <div class="container" id="main-body">
+    <h1 class="text-center">HackySnack</h1>
     <div id="menuBar">
         Filter: <input type="text" ng-model="name" />
     </div>
 
-	<div id="mainCenter">
-	  <h3>Welcome</h3>
-		<ul>
-		<li ng-repeat="item in main.items | filter:name">
-		{{item.item}}
-		<ul><li ng-repeat="ingredient in item.ingredients | filter:name">{{ingredient}}</li></ul>
-		</li>
-		</li>
-	</div>
+    <div id="mainCenter">
+      <h3>Welcome</h3>
+      <ul>
+      <li ng-repeat="item in main.items | filter:name">
+      {{item.item}}
+      <ul><li ng-repeat="ingredient in item.ingredients | filter:name">{{ingredient}}</li></ul>
+      </li>
+      </li>
+    </div>
+
+    <div class="btn-group " role="group" aria-label="...">
+      <button type="button" class="btn btn-default">Login</button>
+      <button type="button" class="btn btn-default">Create Account</button>
+    </div>
+  </div> <!-- End main portion of body -->
+
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
   </body>
 </html>
