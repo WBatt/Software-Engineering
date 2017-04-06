@@ -1,6 +1,6 @@
 var User = require('../models/user')
 var Item = require('../models/item')
-
+var Allergy = require('../models/allergy')
 module.exports = function(app, express){
 
 	//get an instance of the express router
@@ -25,7 +25,6 @@ module.exports = function(app, express){
 	//on routes that end in /users
 	//---------------------------------
 	apiRouter.route('/users')
-
 	//create a user(accessed at POST http://localhost:80/api/user)
 	.post(function(req,res){
 
@@ -194,7 +193,7 @@ apiRouter.get("/items", function(req,res){
 
 apiRouter.get("/items",function(req,res){
 	if(req.query.name){
-		
+
 		Item.find({ "name":req.query.name  }, function(err,item){
 		if(item.length != 0){
 			if(err)
@@ -221,11 +220,15 @@ apiRouter.get("/items",function(req,res){
 
 				res.json(items);
 			});
-			*/
+*/
 	res.json({message: 'Nothing to be queried'});
 }
 
 });
+
+
+
+
 
 apiRouter.route('/items/:item_id')
 .delete(function(req,res){
@@ -239,5 +242,85 @@ apiRouter.route('/items/:item_id')
 	});
 });
 
-	return apiRouter;
+
+
+/****allergies route****/
+
+//post allergies
+apiRouter.post("/allergies",function(req,res){
+
+	//create an instance of the Allergy model
+	var allergy = new Allergy();
+
+	//set the allergy information(comes from the request)
+	allergy.name = req.body.name;
+	allergy.category = req.body.category;
+
+	//save the user and check for errors
+	allergy.save(function(err){
+		if(err)
+			return res.json({"err":err });
+	  else
+			res.json({success:true, message: "allergy created!"});
+	});
+});
+
+
+
+
+
+
+//get allergies
+apiRouter.get("/allergies",function(req,res){
+	if(req.query.name){
+
+		Allergy.find({ "name":req.query.name  }, function(err,allergy){
+		if(allergy.length != 0){
+			if(err)
+				res.json({"err": err});
+				//return the allergy
+			else{
+
+				res.json(allergy);
+	  	}
+		}
+		else{
+			res.json({message: 'allergy not found'});
+		}
+		});
+
+	}
+	else if(req.query.category){
+		Allergy.find({ "category":req.query.category  }, function(err,allergy){
+		if(allergy.length != 0){
+			if(err)
+				res.json({"err": err});
+				//return the allergy
+			else{
+
+				res.json(allergy);
+			}
+		}
+		else{
+			res.json({message: 'allergy not found'});
+		}
+		});
+
+	}
+	else{
+	//get all allergies
+		Allergy.find(function(err, allergies){
+			if(err)
+				return res.json({"err": err});
+			else
+			res.json(allergies);
+
+			});
+
+	//res.json({message: 'Nothing to be queried'});
+}
+
+});
+
+return apiRouter;
 };
