@@ -17,5 +17,9 @@ module.exports = function(app, express){
 		res.sendFile(path.join(__dirname, '../../public/app/views', 'dashboard.html'));
 	});
 
+	app.get('/createAccount',function(req,res){
+		res.sendFile(path.join(__dirname, '../../public/app/views', 'createAccount.html'));
+	});
+
 
 };
