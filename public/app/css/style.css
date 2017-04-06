@@ -5,6 +5,16 @@ body {
 #main-body {
   background-color: #498FC0 !important;
   color: #ffffff;
+  padding-bottom: 15px;
+}
+
+#login-form {
+  -webkit-border-radius: 15px;
+	-moz-border-radius: 15px;
+  border-radius: 15px;
+  background-color: #316589;
+  padding-top: 15px;
+  padding-bottom: 15px;
 }
 
 .navbar-default {
