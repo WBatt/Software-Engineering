@@ -52,8 +52,42 @@ module.exports = function(app, express){
 
 					res.json({success: true, message: 'User created!'});
 				});
-	});
+	})
 
+	.get(function(req,res){
+		if(req.query.username){
+
+			User.find({ "username":req.query.username  }, function(err,user){
+			if(User.length != 0){
+				if(err)
+					res.json({"err": err});
+					//return the user
+				else{
+
+					res.json(user);
+		  	}
+			}
+			else{
+				res.json({message: 'Username not found'});
+			}
+			});
+
+		}
+		else{
+
+		//get all users
+			User.find(function(err, users){
+				if(err)
+					return res.json({"err": err});
+				else
+
+					res.json(users);
+				});
+
+
+	}
+
+	});
 
 	apiRouter.post('/login', function(req, res){
 
@@ -211,8 +245,8 @@ apiRouter.get("/items",function(req,res){
 
 	}
 	else{
-		/*
-	//get all items, theres no items
+
+	//get all items,
 		Item.find(function(err, items){
 			if(err)
 				return res.json({"err": err});
@@ -220,8 +254,8 @@ apiRouter.get("/items",function(req,res){
 
 				res.json(items);
 			});
-*/
-	res.json({message: 'Nothing to be queried'});
+
+	//res.json({message: 'Nothing to be queried'});
 }
 
 });
