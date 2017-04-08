@@ -4,9 +4,9 @@ var Schema = mongoose.Schema;
 
 //item Schema
 var ItemSchema = new Schema({
-  name: {type: String, required: true},
-  description: String,
-  exp_date: {type: Date, required: true }
+  name: {type: String},
+}, {
+  strict: false
 });
 
 //return model
