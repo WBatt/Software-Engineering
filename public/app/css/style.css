@@ -1,10 +1,9 @@
 body {
-  background-color: #316589 !important;
+  background-color: #e4e4e4 !important;
+  font-family: 'Noto Serif', serif;
 }
 
 #main-body {
-  background-color: #498FC0 !important;
-  color: #ffffff;
   padding-bottom: 15px;
 }
 
@@ -12,15 +11,25 @@ body {
   -webkit-border-radius: 15px;
 	-moz-border-radius: 15px;
   border-radius: 15px;
-  background-color: #316589;
+  background-color: #999999;
   padding-top: 15px;
   padding-bottom: 15px;
+}
+
+.logo {
+  font-family: 'Orbitron', sans-serif;
+
+}
+
+a:hover {
+  text-decoration: none;
 }
 
 .navbar-default {
   background-color: #498ec0;
   border-color: #316589;
   margin-bottom: 0px;
+  color: #ffffff;
 }
 .navbar-default .navbar-brand {
   color: #ffffff;
