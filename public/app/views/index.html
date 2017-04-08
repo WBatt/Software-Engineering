@@ -40,8 +40,7 @@
   </nav>
 
 
-  <body ng-app="myApp" ng-controller="MainController as main">
-
+  <body ng-app="submitExample" ng-controller="ExampleController">
 
 
     <!-- Main portion of the body -->
@@ -50,12 +49,13 @@
     <div id="menuBar">
         Filter: <input type="text" ng-model="name" />
     </div>
-
+{{6+8}}
     <div id="mainCenter">
       <h3>Welcome</h3>
       <ul>
       <li ng-repeat="item in main.items | filter:name">
       {{item.item}}
+
       <ul><li ng-repeat="ingredient in item.ingredients | filter:name">{{ingredient}}</li></ul>
       </li>
       </li>

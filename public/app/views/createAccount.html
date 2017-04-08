@@ -8,7 +8,10 @@
     <!-- Bootstrap -->
     <link href="css/bootstrap.css" rel="stylesheet">
     <link href="css/style.css" rel="stylesheet">
+    <script type="text/javascript" charset="utf-8" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular.js"></script>
+  	<script type="text/javascript" charset="utf-8" src="/js/createAccount.js"></script>
   </head>
+
 
   <nav class="navbar navbar-default">
     <div class="container">
@@ -37,30 +40,29 @@
   </nav>
 
 
-  <body>
-
+  <body ng-app="submitExample">
     <!-- Main portion of the body -->
   <div class="container" id="main-body">
     <h1 class="text-center">Create Account</h1>
-    <form>
+    <div class= "somePadding"></div>
+
+    <form ng-controller="ExampleController" ng-submit="submit()">
       <div class="form-group row">
-        <label class="col-2 col-form-label" for="email">Email:</label>
         <div class="col-10">
-          <input type="email" class="form-control" id="email" placeholder="Enter email">
+          <input type="text" class="form-control" ng-model="name" placeholder="Name">
         </div>
         <p></p>
         <div class="col-10">
-          <input type="email" class="form-control" id="email" placeholder="Confirm email">
+          <input type="text" class="form-control" ng-model="username" placeholder="User Name">
         </div>
       </div>
       <div class="form-group row">
-        <label class="col-2 col-form-label" for="pwd">Password:</label>
         <div class="col-10">
-          <input type="password" class="form-control" id="pwd" placeholder="Enter password">
+          <input type="password" class="form-control" ng-model="password1"placeholder="Create Password">
         </div>
         <p></p>
         <div class="col-10">
-          <input type="password" class="form-control" id="pwd" placeholder="Confirm password">
+          <input type="password" class="form-control" ng-model="password2" placeholder="Confirm password">
         </div>
       </div>
       <div class="form-group row">
@@ -72,10 +74,12 @@
       </div>
       <div class="form-group">
         <div class="col-sm-offset-2 col-sm-10">
-          <button type="submit" class="btn btn-default">Submit</button>
+          <button type="submit" id="submit" class="btn btn-default">Submit</button>
         </div>
       </div>
-      </form>
+    </form>
+
+
 
   </div> <!-- End main portion of body -->
 
