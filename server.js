@@ -51,9 +51,9 @@ var apiRoutes  = require('./app/routes/api')(app, express, passport);
 require('./app/routes/pages')(path, app, express, passport);
 
 // Main catchall route
-app.get("*", function(req, res){
-	res.sendFile(path.join(__dirname + '/public/app/views/index.html'));
-});
+//app.get("*", function(req, res){
+//	res.sendFile(path.join(__dirname + '/public/app/views/index.html'));
+//});
 
 //REGISTER OUR ROUTES -------------------
 //all of our routes will be prefixed with /api
