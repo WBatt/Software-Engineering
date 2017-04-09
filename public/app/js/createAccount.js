@@ -2,7 +2,7 @@ var app = angular.module('cAccountApp', [])
 		app.controller('cAccountController', ['$scope','$http', function($scope, $http) {
 			$scope.submit = function() {
 				dataObj = {
-						name : "need a name",
+						name : "",
 						username : $scope.username,
 						password : $scope.password
 				};
