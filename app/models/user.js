@@ -9,7 +9,18 @@ var UserSchema = new Schema({
 	username: {type: String, required: true, index: {unique: true}},
 	token: {type: String, required: true, index: {unique: true}},
 	token_expiration: {type: Date, required: true},
-	password: {type: String, required: true, select: false}
+	password: {type: String, required: true, select: false},
+	date_registered: {type: Date, required: false},
+	last_logged: {type: Date, required: false},
+	allergic_to_milk: {type: Boolean, required: false},
+	allergic_to_eggs: {type: Boolean, required: false},
+	allergic_to_fish: {type: Boolean, required: false},
+	allergic_to_shellfish: {type: Boolean, required: false},
+	allergic_to_tree_nuts: {type: Boolean, required: false},
+	allergic_to_peanuts: {type: Boolean, required: false},
+	allergic_to_wheat: {type: Boolean, required: false},
+	allergic_to_soybeans: {type: Boolean, required: false},
+	allergic_to_gluten: {type: Boolean, required: false}
 });
 
 //hash the password before the user is saved
