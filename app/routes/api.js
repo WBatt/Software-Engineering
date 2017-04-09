@@ -31,14 +31,11 @@ module.exports = function(app, express, passport){
 	//create a user(accessed at POST http://localhost:80/api/user)
 	.post(function(req,res){
 
-<<<<<<< HEAD
 		passport.authenticate('local', {
 			successRedirect: '/',
 			failureRedirect: '/login',
 			failureFlash: true
 		})
-	});
-=======
 		//create a new instance of the User model
 		var user = new User();
 
@@ -93,7 +90,6 @@ module.exports = function(app, express, passport){
 
 				res.json(users);
 			});
->>>>>>> master
 
 
 		}

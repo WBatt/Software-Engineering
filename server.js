@@ -20,7 +20,7 @@ var port			= config.port;				//set the port for our app
 // use body parser so we can grab information from POST requests
 app.use(bodyParser.urlencoded({extended:true}));
 app.use(bodyParser.json());
-app.use(express.static(__dirname + '/public'));
+app.use(express.static(__dirname + '/public/app'));
 app.use(session({
 	secret: 'foooooood',
 	resave: false,
