@@ -1,5 +1,5 @@
 {
-  "name": "node-example",
+  "name": "Hackysnacks",
   "version": "1.0.0",
   "description": "",
   "main": "server.js",
@@ -13,6 +13,8 @@
     "body-parser": "^1.16.1",
     "express": "^4.14.1",
     "mongoose": "^4.8.4",
-    "morgan": "^1.8.1"
+    "morgan": "^1.8.1",
+    "nutritionix": "^0.6.1",
+    "request": "^2.81.0"
   }
 }
