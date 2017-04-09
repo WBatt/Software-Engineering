@@ -9,7 +9,9 @@ var UserSchema = new Schema({
 	username: {type: String, required: true, index: {unique: true}},
 	token: {type: String, required: true, index: {unique: true}},
 	token_expiration: {type: Date, required: true},
-	password: {type: String, required: true, select: false}
+	password: {type: String, required: true, select: false},
+	date_registered: {type: Date, required: false},
+	last_logged: {type: Date, required: false}
 });
 
 //hash the password before the user is saved

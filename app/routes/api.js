@@ -37,7 +37,7 @@ module.exports = function(app, express){
 		user.password = req.body.password;
 		user.token = (Math.random()*1e128).toString(36)
 		user.token_expiration = Date.now() + (36000 * 60 * 24 * 60) // 2 months for now
-
+		user.date_registered = Date.now();
 		//save the user and check for errors
 		user.save(function(err){
 			if(err){
@@ -111,12 +111,28 @@ module.exports = function(app, express){
 						message: 'Authentication failed. Wrong Password'
 					});
 				} else {
+
+
 					var local_token = user.token || "In_Development"
 					res.json({
 						success: true,
 						message: 'Successsssss',
 						token: local_token
 					});
+
+					//last logged saved update begin
+
+					user.last_logged = Date.now()
+					user.save(function(err){
+						if(err)
+							return res.json({"err":err });
+						else
+							console.log("date saved")
+
+					})
+
+				//update end
+
 				}
 			}
 
