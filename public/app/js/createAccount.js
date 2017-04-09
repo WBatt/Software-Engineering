@@ -1,10 +1,10 @@
-var app = angular.module('submitExample', [])
-		app.controller('ExampleController', ['$scope','$http', function($scope, $http) {
+var app = angular.module('cAccountApp', [])
+		app.controller('cAccountController', ['$scope','$http', function($scope, $http) {
 			$scope.submit = function() {
 				dataObj = {
-						name : $scope.name,
+						name : "need a name",
 						username : $scope.username,
-						password : $scope.password1
+						password : $scope.password
 				};
 				var config = {
       		body : {

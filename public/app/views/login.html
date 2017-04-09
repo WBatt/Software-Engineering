@@ -11,6 +11,9 @@
 
     <link href="https://fonts.googleapis.com/css?family=Noto+Serif" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Orbitron:700" rel="stylesheet">
+
+    <script type="text/javascript" charset="utf-8" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular.js"></script>
+  	<script type="text/javascript" charset="utf-8" src="/js/login.js"></script>
   </head>
 
   <nav class="navbar navbar-default">
@@ -33,9 +36,9 @@
           <li><a href="about.html">Learn More </a></li>
         </ul>
         <div class="nav navbar-nav navbar-right">
-          <form class="navbar-form">
+          <form class="navbar-form" ng-submit="submit()">
             <div class="form-group">
-              <input type="email" class="form-control" id="email" placeholder="Enter email">
+              <input type="text"  class="form-control" id="email" placeholder="Enter email">
               <input type="password" class="form-control" id="pwd" placeholder="Enter password">
               <button type="submit" class="btn btn-primary">Sign In</button>
             </div>
@@ -45,21 +48,21 @@
     </div><!-- /.container -->
   </nav>
 
-  <body>
+  <body ng-app="loginApp" ng-controller="loginController">
 
     <!-- Main portion of the body -->
   <div class="container" id="main-body">
     <a href="index.html"><h1 class="text-center logo">HackySnack</h1></a>
     <div class="container col-md-push-4 col-md-5" id="login-form">
-      <form>
+      <form ng-submit="submit()">
         <div class="form-group row">
           <div class="col-md-offset-1 col-sm-10">
-            <input type="email" class="form-control" id="email" placeholder="Enter email">
+            <input type="text" ng-model="email" class="form-control" id="email" placeholder="Enter email">
           </div>
         </div>
         <div class="form-group row">
           <div class="col-md-offset-1 col-sm-10">
-            <input type="password" class="form-control" id="pwd" placeholder="Enter password">
+            <input type="password" ng-model="pwd" class="form-control" id="pwd" placeholder="Enter password">
           </div>
         </div>
         <div class="form-group row">
