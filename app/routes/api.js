@@ -263,10 +263,15 @@ apiRouter.get("/items",function(req,res){
 
 					var items = JSON.parse(body)
 					items.hits.forEach(function(i){
+						//filterAllergies(i);
 						var item = new Item(i)
-						item.save(function(err){
-							console.log(err)
-						})
+						item.ingredients = i.fields.nf_ingredient_statement;
+						if(item.ingredients != null) {
+                            item.save(function (err) {
+                                console.log(err)
+                            })
+                        }
+
 					})
 					res.json({message: items.hits});
 				});
@@ -388,3 +393,10 @@ apiRouter.get("/allergies",function(req,res){
 
 return apiRouter;
 };
+
+
+function filterAllergies(item)
+{
+	console.log(item.fields.nf_ingredient_statement);
+
+}
