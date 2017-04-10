@@ -1,4 +1,12 @@
 var app = angular.module('cAccountApp', [])
+		app.directive('navigationBar',function(){
+					return {
+									restrict: 'E',
+									templateUrl: '/views/navBar.html'
+					 			  };
+	 });
+
+
 		app.controller('cAccountController', ['$scope','$http', function($scope, $http) {
 			$scope.submit = function() {
 				dataObj = {
