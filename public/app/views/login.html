@@ -7,75 +7,54 @@
     <title>HackySnack | Login</title>
     <!-- Bootstrap -->
     <link href="css/bootstrap.css" rel="stylesheet">
-    <link href="css/style.css" rel="stylesheet">
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-	<script src="js/bootstrap.js"></script>
+    <link href="css/stylelogin.css" rel="stylesheet">
 
     <link href="https://fonts.googleapis.com/css?family=Noto+Serif" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Orbitron:700" rel="stylesheet">
+
+    <script type="text/javascript" charset="utf-8" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular.js"></script>
+  	<script type="text/javascript" charset="utf-8" src="/js/login.js"></script>
   </head>
 
-  <nav class="navbar navbar-default">
-    <div class="container">
-      <!-- Brand and toggle get grouped for better mobile display -->
-      <div class="navbar-header">
-        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-          <span class="sr-only">Toggle navigation</span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-        </button>
-        <a class="navbar-brand" href="/dashboard">HackySnack</a>
-      </div>
+  <navigation-Bar></navigation-Bar>
 
-      <!-- Collect the nav links, forms, and other content for toggling -->
-      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-        <ul class="nav navbar-nav">
-          <li class="active"><a href="/dashboard">Home <span class="sr-only">(current)</span></a></li>
-        </ul>
-        <ul class="nav navbar-nav navbar-right">
-          <li><a href="/createAccount">Create Account</a></li>
-          <li><a href="/login">Login</a></li>
-        </ul>
-      </div><!-- /.navbar-collapse -->
-    </div><!-- /.container -->
-  </nav>
-
-
-
-
-  <body>
+  <body ng-app="loginApp" >
 
     <!-- Main portion of the body -->
-    <div class="container" id="main-body">
-      <a href="index.html"><h1 class="text-center logo">HackySnack</h1></a>
-      <div class="container col-md-push-4 col-md-5" id="login-form">
-        <form>
-          <div class="form-group row">
-            <div class="col-md-offset-1 col-sm-10">
-              <input type="email" class="form-control" id="email" placeholder="Enter email">
+  <div class="container" id="main-body">
+    <a href="index.html"><h1 class="text-center logo">HackySnack</h1></a>
+    <div class="container col-md-push-4 col-md-5" id="login-form">
+      <form name="signIn" ng-submit="signIn.$valid && submit()" ng-controller="loginController as loginCtrl" novalidate>
+        <div class="form-group row">
+          <div class="col-md-offset-1 col-sm-10">
+            <input type="email" ng-model="loginCtrl.data.username" class="form-control" id="email" placeholder="Enter email" required>
+          </div>
+        </div>
+        <div class="form-group row">
+          <div class="col-md-offset-1 col-sm-10">
+            <input type="password" ng-model="loginCtrl.data.pwd" class="form-control" id="pwd" placeholder="Enter password" required>
+          </div>
+        </div>
+        <div class="form-group row">
+          <div class="col-md-offset-1 col-sm-offset-2 col-sm-10">
+            <div class="checkbox">
+              <label><input type="checkbox"> Remember me</label>
             </div>
           </div>
-          <div class="form-group row">
-            <div class="col-md-offset-1 col-sm-10">
-              <input type="password" class="form-control" id="pwd" placeholder="Enter password">
-            </div>
-          </div>
-          <div class="form-group row">
-            <div class="col-md-offset-1 col-sm-offset-2 col-sm-10">
-              <div class="checkbox">
-                <label><input type="checkbox"> Remember me</label>
-              </div>
-            </div>
-          </div>
-          <div class="form-group">
-            <div class="col-md-offset-1 col-sm-offset-2 col-sm-10">
-              <button type="submit" class="btn btn-primary">Sign In</button>
-            </div>
-          </div>
-          </form>
-        </div> <!--End the form div -->
+        </div>
+        <div class="form-group">
+          <div class="col-md-offset-1 col-sm-offset-2 col-sm-10">
+            <button type="submit" class="btn btn-primary">Sign In</button>
 
-    </div> <!-- End main portion of body -->
+          </div>
+        </div>
+        </form>
+      </div> <!--End the form div -->
+
+  </div> <!-- End main portion of body -->
+
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="js/bootstrap.js"></script>
   </body>
 </html>

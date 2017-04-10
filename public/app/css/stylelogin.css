@@ -85,7 +85,12 @@ a:hover {
 .somePadding{
   padding: 2%;
 }
-
+.ng-invalid.ng-dirty {
+       border-color:red;
+}
+.ng-valid.ng-dirty {
+       border-color:green;
+}
 @media (max-width: 767px) {
   .navbar-default .navbar-nav .open .dropdown-menu > li > a {
     color: #ffffff;
