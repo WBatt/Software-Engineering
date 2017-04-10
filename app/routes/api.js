@@ -338,11 +338,11 @@ apiRouter.get("/items",function(req,res){
 				  qs: {
                     appId: config.nutritionix.appId,
 				    appKey: config.nutritionix.appKey,
-				    fields: *,
-				    results: 0:50
+				    fields: '*',
+				    results: '0:50'
                   },
 				  headers:  {
-                    postman-token: '01a3693a-6d0c-890c-3ae7-69609ab44652',
+                    'postman-token': '01a3693a-6d0c-890c-3ae7-69609ab44652',
 				    'cache-control': 'no-cache',
 				    'content-type': 'application/x-www-form-urlencoded' },
 				  form: {
