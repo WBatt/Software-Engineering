@@ -1,6 +1,7 @@
 var User = require('../models/user')
 var Item = require('../models/item')
 var Allergy = require('../models/allergy')
+var Recipe = require('../models/recipe')
 module.exports = function(app, express){
 
 	//get an instance of the express router
@@ -449,6 +450,48 @@ apiRouter.get("/allergies",function(req,res){
 }
 
 });
+
+//recipe route
+
+apiRouter.post("/recipe",function(req, res){
+    var recipe = new Recipe();
+    recipe.name = req.body.name;
+    recipe.author = req.body.author;
+    
+    recipe.ingredients.push(req.body.ingredients);
+    recipe.save(function(err){
+        if(err)
+            return res.json({"err":err});
+        else
+            res.json({success:true,message:"Recipe created"});
+    });
+});
+
+
+apiRouter.get("/recipe",function(req,res){
+    if(req.query.name){
+        
+        Recipe.find({"name":req.query.name},function(err,recipe){
+            //check if it is null
+            if(recipe.length!=0){
+                if(err) 
+                    res.json({"err":err})
+                else //return the recipe
+                    res.json(recipe)
+                }
+            else{//recipe not found
+                res.json({message:"Recipe not found"});
+            }
+        });
+    }
+    else{
+        res.json({message:"Nothing to be queried"});}
+});
+
+
+
+
+
 
 return apiRouter;
 };
