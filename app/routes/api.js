@@ -1,8 +1,8 @@
-var User = require('../models/user')
-var Item = require('../models/item')
-var Allergy = require('../models/allergy')
-var config = require('../../config')
-var request = require('request')
+var User = require('../models/user');
+var Item = require('../models/item');
+var Allergy = require('../models/allergy');
+var config = require('../../config');
+var request = require('request');
 
 module.exports = function(app, express){
 
