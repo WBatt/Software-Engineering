@@ -1,7 +1,7 @@
 var User = require('../models/user')
 var Item = require('../models/item')
 var Allergy = require('../models/allergy')
-
+var config = require('../../config')
 
 module.exports = function(app, express){
 
