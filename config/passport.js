@@ -21,11 +21,14 @@ module.exports = function(passport){
 	  });
 
 	passport.use('local-signup', new LocalStrategy(
+		{
+			passReqToCallback: true
+		},
 		function(req, username, password, done){
-			
+
 			process.nextTick(function(){
 
-				User.findOne({username: username}, function(err, user){
+				User.findOne({username: req.body.username}, function(err, user){
 					if (err)
 						return done(err);
 
@@ -33,17 +36,36 @@ module.exports = function(passport){
 						return done(null, false, { message: 'That username is already taken' });
 
 					else {
-						var newUser 		= new User();
-						newUser.username 	= username;
-						newUser.password	= password
+						var user 		          = new User();
+						user.name             = req.body.name;
+						user.username         = req.body.username;
+						user.password         = req.body.password;
+						user.token            = (Math.random()*1e128).toString(36)
+						user.token_expiration = Date.now() + (36000 * 60 * 24 * 60) // 2 months for now
+						user.date_registered  = Date.now();
+						//initialize all user allergies to false
+						user.allergic_to_milk = false;
+						user.allergic_to_eggs = false;
+						user.allergic_to_fish = false;
+						user.allergic_to_shellfish = false;
+						user.allergic_to_tree_nuts = false;
+						user.allergic_to_peanuts = false;
+						user.allergic_to_wheat = false;
+						user.allergic_to_soybeans = false;
+						user.allergic_to_gluten = false
 
-						newUser.save(function(err, user){
-							if (err) 
-								throw err;
+						//save the user and check for errors
+						user.save(function(err){
+							if(err){
+								//duplicate entry
+								return done(err);
+							} else {
+								done(null, user)
+							}
 
-							return done(null, newUser);
-						})
-					}
+
+							});
+					  }
 				});
 			})
 		})

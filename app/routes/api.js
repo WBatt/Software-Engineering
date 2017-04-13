@@ -1,7 +1,7 @@
 var User = require('../models/user')
 var Item = require('../models/item')
 var Allergy = require('../models/allergy')
-
+var config = require('../../config')
 
 module.exports = function(app, express, passport){
 
@@ -18,7 +18,7 @@ module.exports = function(app, express, passport){
 	//test route to make sure everything is working
 	// accessed at GET http://localhost:80/api
 	apiRouter.get('/',function(req,res){
-	res.json({message: 'hooray! Welcome to our ap!'});
+	  res.json({message: 'hooray! Welcome to our ap!'});
 	});
 	//--------------------------------------
 	//more routes for our API will happen here
@@ -28,49 +28,11 @@ module.exports = function(app, express, passport){
 	//---------------------------------
 	apiRouter.route('/users')
 	//create a user(accessed at POST http://localhost:80/api/user)
-	.post(function(req,res){
-
-		passport.authenticate('local', {
+	.post(passport.authenticate('local-signup', {
 			successRedirect: '/',
 			failureRedirect: '/login',
-			failureFlash: true
-		})
-		//create a new instance of the User model
-		var user = new User();
-
-		//set the users information(comes from the request)
-		user.name = req.body.name;
-		user.username = req.body.username;
-		user.password = req.body.password;
-		user.token = (Math.random()*1e128).toString(36)
-		user.token_expiration = Date.now() + (36000 * 60 * 24 * 60) // 2 months for now
-		user.date_registered = Date.now();
-		//initialize all user allergies to false
-		user.allergic_to_milk = false;
-		user.allergic_to_eggs = false;
-		user.allergic_to_fish = false;
-		user.allergic_to_shellfish = false;
-		user.allergic_to_tree_nuts = false;
-		user.allergic_to_peanuts = false;
-		user.allergic_to_wheat = false;
-		user.allergic_to_soybeans = false;
-		user.allergic_to_gluten = false
-
-		//save the user and check for errors
-		user.save(function(err){
-			if(err){
-				//duplicate entry
-				if(err.code == 11000)
-					return res.json({success:false, message: 'A user with that username already exists.'});
-
-					else
-						return res.send(err);
-					}
-
-
-					res.json({success: true, message: 'User created!'});
-				});
-	})
+			failureFlash: false
+		}))
 
 	//update user
 .put(function(req,res){
