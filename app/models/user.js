@@ -6,10 +6,9 @@ var bcrypt = require('bcrypt-nodejs');
 //user schema
 var UserSchema = new Schema({
 	name: String,
+	email: String,
 	username: {type: String, required: true, index: {unique: true}},
-	token: {type: String, required: true, index: {unique: true}},
-	token_expiration: {type: Date, required: true},
-	password: {type: String, required: true, select: false},
+	password: {type: String, required: false, select: false},
 	date_registered: {type: Date, required: false},
 	last_logged: {type: Date, required: false},
 	allergic_to_milk: {type: Boolean, required: false},
@@ -20,7 +19,8 @@ var UserSchema = new Schema({
 	allergic_to_peanuts: {type: Boolean, required: false},
 	allergic_to_wheat: {type: Boolean, required: false},
 	allergic_to_soybeans: {type: Boolean, required: false},
-	allergic_to_gluten: {type: Boolean, required: false}
+	allergic_to_gluten: {type: Boolean, required: false},
+	facebook: {type: Object, required: false}
 });
 
 //hash the password before the user is saved

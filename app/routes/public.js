@@ -1,5 +1,5 @@
 var path = require("path")
-module.exports = function(app, express, public){
+module.exports = function(app, express, passport){
 
 	app.get('/',function(req,res){
 		res.sendFile(path.join(__dirname, '../../public/app/views', 'index.html'));
@@ -21,5 +21,14 @@ module.exports = function(app, express, public){
 		res.sendFile(path.join(__dirname, '../../public/app/views', 'createAccount.html'));
 	});
 
+	app.get('/about',function(req,res){
+		res.sendFile(path.join(__dirname, '../../public/app/views', 'about.html'));
+	});
 
+
+	// facebook route
+	app.get('/auth/facebook', passport.authenticate('facebook', {failureRedirect: '/login'}))
+	app.get('/auth/facebook/callback', passport.authenticate('facebook', {failureRedirect: '/login'}), function(req, res){
+		res.redirect('/')
+	})
 };

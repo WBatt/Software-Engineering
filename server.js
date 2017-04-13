@@ -48,7 +48,7 @@ app.use(morgan('combined', {stream: accessLogStream}));
 
 //get an instance of the express router
 var apiRoutes  = require('./app/routes/api')(app, express, passport);
-require('./app/routes/public')(app, express);
+require('./app/routes/public')(app, express, passport);
 
 // Main catchall route
 //app.get("*", function(req, res){

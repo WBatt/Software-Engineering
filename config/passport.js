@@ -1,6 +1,8 @@
 
-var LocalStrategy 	= require('passport-local').Strategy;
-var User			= require('../app/models/user');
+var LocalStrategy 	 = require('passport-local').Strategy;
+var FacebookStrategy = require('passport-facebook').Strategy;
+var User			 = require('../app/models/user');
+var config           = require('../config')
 
 module.exports = function(passport){
 		// ======================
@@ -71,4 +73,52 @@ module.exports = function(passport){
 		})
 
 	);
+
+	passport.use('facebook', new FacebookStrategy({
+		clientID: config.facebook.appId,
+		clientSecret: config.facebook.appSecret,
+		callbackURL: "http://" + (config.url || "localhost")+ ":" + (process.env.PORT || 8080) + "/auth/facebook/callback",
+		profileFields: ['id', 'displayName', 'email', 'birthday', 'friends', 'first_name', 'last_name', 'middle_name', 'gender', 'link']
+	  }, function(accessToken, refreshToken, profile, done){
+		User.findOne({'facebook.id': profile.id}, function(err, user){
+			if (err){
+				return done(err)
+			} else {
+				
+				// no user, create it
+				if(!user){
+					var user = new User({
+						name: profile.displayName,
+						email: (profile.emails ? profile.emails[0] : {}).value || profile.name.givenName + profile.id,
+						username: profile.username || profile.id,
+						facebook: profile._json,
+						date_registered: Date.now(),
+						last_logged: Date.now(),
+						allergic_to_milk: false,
+						allergic_to_eggs: false,
+						allergic_to_fish: false,
+						allergic_to_shellfish: false,
+						allergic_to_tree_nuts: false, 
+						allergic_to_peanuts: false, 
+						allergic_to_wheat: false,
+						allergic_to_soybeans: false, 
+						allergic_to_gluten: false
+					})
+
+					user.save(function(err, user){
+						if (err){
+							console.error(err)
+						} else {
+							return done(null, user)
+						}
+					})
+				} else {
+					// Found user, return 
+					return done(null, user)
+				}
+
+			}
+		})
+	  }
+	))
 };

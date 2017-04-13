@@ -2,6 +2,7 @@ var User = require('../models/user')
 var Item = require('../models/item')
 var Allergy = require('../models/allergy')
 var config = require('../../config')
+var request = require('request')
 
 module.exports = function(app, express, passport){
 
@@ -402,7 +403,7 @@ apiRouter.post("/allergies",function(req,res){
 
 
 //get allergies
-apiRouter.get("/allergies",function(req,res){
+apiRouter.get("/allergies", auth, function(req,res){
 	if(req.query.name){
 
 		Allergy.find({ "name":req.query.name  }, function(err,allergy){
@@ -455,6 +456,14 @@ apiRouter.get("/allergies",function(req,res){
 
 return apiRouter;
 };
+
+function auth(req, res, next){
+	if (!req.isAuthenticated()){
+		res.send(401);
+	} else {
+		next();
+	}
+}
 
 
 function filterAllergies(item)
