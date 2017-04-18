@@ -293,7 +293,8 @@ var item = new Item();
 item.name = req.body.name;
 item.description = req.body.description;
 item.exp_date = req.body.exp_date;
-
+item.upvotes = 0;
+item.downvotes = 0;
 //save the item and check for errors
 item.save(function(err){
 	if(err)
@@ -372,12 +373,57 @@ apiRouter.route('/items/:item_id')
 });
 
 
+/*
+apiRouter.put("/items",function(req,res){
+    Item.findOneandUpdate({shorten_id: id}, {$inc: {item.upvotes: 1})
+        if(err){throw err;}
+        else{console.log("it works!")}
+    }});
+*/
+
+
+
+
+apiRouter.put("/items",function(req,res){
+        if(req.query.name){
+            Item.findOne({"name": req.query.name},function(err, item){
+                if(Item.length!=0){
+                    if(err)
+                            res.json({"err":err});
+                    else{
+                        if(req.body.upvotes)
+                            item.upvotes++; 
+                        if(req.body.downvotes)
+                            item.downvotes++;
+                        item.save(function(err){
+                            if(err)
+                                res.json({err:"Error! Can't Update"});
+                            else{
+                                res.json({message: 'Successfully updated Item upvotes / downvotes'});
+                                }
+                        });//end Item.save
+                        
+                        }//end else
+
+                }//END IF
+                else{
+                 res.json({err: 'Nothing to be updated '});
+                                    
+                }
+            
+            })
+        }
+});
+            
+
+
+
+
 
 /****allergies route****/
 
 //post allergies
 apiRouter.post("/allergies",function(req,res){
-
 	//create an instance of the Allergy model
 	var allergy = new Allergy();
 
