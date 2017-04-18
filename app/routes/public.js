@@ -21,5 +21,12 @@ module.exports = function(app, express){
 		res.sendFile(path.join(__dirname, '../../public/app/views', 'createAccount.html'));
 	});
 
+	app.get('/feed',function(req,res){
+		res.sendFile(path.join(__dirname, '../../public/app/views', 'feed.html'));
+	});
+
+	app.get('/about',function(req,res){
+		res.sendFile(path.join(__dirname, '../../public/app/views', 'about.html'));
+	});
 
 };

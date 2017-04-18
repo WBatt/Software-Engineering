@@ -2629,11 +2629,7 @@ input[type="search"] {
   }
 }
 .form-group {
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
   margin-bottom: 15px;
-  max-width: 300px;
 }
 .radio,
 .checkbox {
