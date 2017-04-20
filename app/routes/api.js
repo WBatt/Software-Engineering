@@ -366,7 +366,7 @@ apiRouter.get("/items", function(req,res){
   });
 
   //get allergies
-  apiRouter.get("/allergies", auth, function(req, res) {
+  apiRouter.get("/allergies", function(req, res) {
     if (req.query.name) {
       Allergy.find({ name: req.query.name }, function(err, allergy) {
         if (allergy.length != 0) {
@@ -401,6 +401,24 @@ apiRouter.get("/items", function(req,res){
       //res.json({message: 'Nothing to be queried'});
     }
   });
+
+
+  apiRouter.get("/auth", function(req, res){
+  	if (req.isAuthenticated()){
+		res.json({
+			success: true
+		})
+	} else {
+		res.json({
+			success:false
+		})
+	}
+  })
+
+ apiRouter.get("/logout", function(req, res){
+	 req.logout()
+	 res.redirect('/')
+ })
 
   return apiRouter;
 };
