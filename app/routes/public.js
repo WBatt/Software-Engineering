@@ -29,4 +29,7 @@ module.exports = function(app, express){
 		res.sendFile(path.join(__dirname, '../../public/app/views', 'about.html'));
 	});
 
+	app.get('/profile-settings',function(req,res){
+		res.sendFile(path.join(__dirname, '../../public/app/views', 'profile-settings.html'));
+	});
 };
