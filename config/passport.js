@@ -74,6 +74,35 @@ module.exports = function(passport){
 
 	);
 
+	passport.use('local-login', new LocalStrategy(
+		{
+			usernameField: 'username',
+			passwordField: 'password',
+			passReqToCallback: true
+		},
+		function(req, username, password, done){
+
+			process.nextTick(function(){
+
+				User.findOne({username: req.body.username}, function(err, user){
+					if (err){
+						console.log("User find error: ", err)
+						return done(err);
+					}
+
+					if (user){
+						var validPassword = user.comparePassword(req.body.password);
+						if (!validPassword){
+							return done(null, false, {message: "Password did not match"});
+						} else {
+							return done(null, user);
+						}
+					}
+				})
+			})
+		}
+	))
+
 	passport.use('facebook', new FacebookStrategy({
 		clientID: config.facebook.appId,
 		clientSecret: config.facebook.appSecret,

@@ -141,53 +141,10 @@ module.exports = function(app, express, passport) {
       }
     });
 
-  apiRouter.post("/login", function(req, res) {
-    var query = User.findOne({ username: req.body.username });
-    query.select("username password token");
-    var promise = query.exec();
-
-    promise.then(function(user) {
-        if (!user) {
-          res.json({
-            success: false,
-            message: "Authentication failed. No user found."
-          });
-        } else if (user) {
-          //			user.save();
-          // check password
-          var validPassword = user.comparePassword(req.body.password);
-          if (!validPassword) {
-            res.json({
-              success: false,
-              message: "Authentication failed. Wrong Password"
-            });
-          } else {
-            var local_token = user.token || "In_Development";
-            res.json({
-              success: true,
-              message: "Successsssss",
-              token: local_token
-            });
-
-            //last logged saved update begin
-
-            user.last_logged = Date.now();
-            user.save(function(err) {
-              if (err) return res.json({ err: err });
-              else console.log("date saved");
-            });
-
-            //update end
-          }
-        }
-      })
-      .catch(function(err) {
-        res.json({
-          success: false,
-          message: err
-        });
-      });
-  });
+  apiRouter.post("/loginUser", passport.authenticate('local-login', {
+  	successRedirect: "/",
+	failureRedirect: "/#/login"
+  }))
 
   apiRouter
     .route("/users/:user_id")
