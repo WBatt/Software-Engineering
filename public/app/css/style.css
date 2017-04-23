@@ -3,6 +3,19 @@ body {
   font-family: 'Noto Serif', serif;
 }
 
+section {
+  color: #f2f2f2;
+  -webkit-border-radius: 15px;
+	-moz-border-radius: 15px;
+  border-radius: 15px;
+  background-color: #316589;
+  padding-top: 15px;
+  padding-bottom: 15px;
+  margin-top: 15px;
+  padding-left: 15px;
+  padding-right: 15px;
+}
+
 #main-body {
   padding-bottom: 15px;
 }
@@ -11,9 +24,30 @@ body {
   -webkit-border-radius: 15px;
 	-moz-border-radius: 15px;
   border-radius: 15px;
-  background-color: #999999;
+  background-color: #316589;
   padding-top: 15px;
   padding-bottom: 15px;
+}
+
+input[type=checkbox] {
+  /* Double-sized Checkboxes */
+  -ms-transform: scale(2); /* IE */
+  -moz-transform: scale(2); /* FF */
+  -webkit-transform: scale(2); /* Safari and Chrome */
+  -o-transform: scale(2); /* Opera */
+  padding: 10px;
+}
+
+.checkbox-list {
+  font-size: 32px;
+}
+
+label {
+  color: #ffffff;
+}
+
+.fa {
+  font-size: 172px;
 }
 
 .logo {
