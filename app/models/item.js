@@ -9,6 +9,7 @@ var ItemSchema = new Schema(
     ingredients: { type: String },
     upvotes: {type: Number, min:0},
     downvotes: {type: Number, min:0},
+      allChanged: {type: Boolean},
     flagCategories: {
       all: [],
       egg: [String],
@@ -27,16 +28,26 @@ var ItemSchema = new Schema(
     strict: false
   }
 );
-ItemSchema.pre("save", function(next) {
-  var item = this;
 
+
+ItemSchema.pre('validate', function(next) {
+  var item = this;
+  item.allChanged = false;
+
+
+
+  item.flagCategories.all = [];
   allergy.find({}, function(err, allergies) {
     allergies.forEach(function(allergyI) {
-      //console.log("SEARCHING ALLERGY: " , allergyI.name);
-      //console.log(allergyI.name);
       if (item.ingredients.search(allergyI.name.toLowerCase()) != -1) {
+
         console.log("MATCH", allergyI.name, allergyI.category);
-        item.flagCategories.all.push(allergyI);
+        item.allChanged = true;
+        item.markModified('allChanged');
+
+        item.flagCategories.all.push(allergyI.name);
+        item.markModified('flagCategories.all');
+
         switch (allergyI.category.toString()) {
           case "egg":
             item.flagCategories.egg.push(allergyI.name);
@@ -72,6 +83,7 @@ ItemSchema.pre("save", function(next) {
       }
     });
   });
+
   next();
 });
 //return model
