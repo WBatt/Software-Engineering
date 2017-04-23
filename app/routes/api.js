@@ -259,10 +259,8 @@ module.exports = function(app, express, passport) {
               query: req.query.name
             }
           };
-
           request(options, function(error, response, body) {
             if (error) throw new Error(error);
-
             var items = JSON.parse(body);
             items.hits.forEach(function(i) {
               //filterAllergies(i);
@@ -274,7 +272,7 @@ module.exports = function(app, express, passport) {
                 });
               }
             });
-            res.json({ message: items.hits });
+            res.json(items);
           });
         }
       });

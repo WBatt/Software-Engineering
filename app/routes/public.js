@@ -38,6 +38,10 @@ module.exports = function(app, express, passport) {
 		res.sendFile(path.join(__dirname, '../../public/app/views', 'profile-settings.html'));
 	});
 
+  app.get('/search-result',function(req,res){
+		res.sendFile(path.join(__dirname, '../../public/app/views', 'search-result.html'));
+	});
+
   // facebook route
   app.get(
     "/auth/facebook",

@@ -1,0 +1,12 @@
+
+<script type="text/javascript" charset="utf-8" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-route.js"></script>
+<script type="text/javascript" charset="utf-8" src="/js/hackySnack.js"></script>
+<div ng-app="mainApp" ng-controller="searchController">
+<button  ng-click = "search()">search </button>
+<div class="container"   ng-repeat="results in searchresults">
+  <!-- ng-repeat for individual search results -->
+  <img src="/images/blank-profile140.png" class="img-thumbnail rounded col-xs-2 col-md-2" alt="user profile">
+  <p>{{results.fields.brand_name}}</p>
+</div>
+</div>

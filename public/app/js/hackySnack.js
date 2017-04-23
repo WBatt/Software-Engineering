@@ -49,6 +49,25 @@ app.directive('navigationBar',function(){
           };
 }]);
 
+app.controller('searchController', ['$scope','$http', function($scope, $http) {
+    $scope.searchresults;
+  $scope.search = function() {
+
+
+
+
+      $http.get('http://localhost:8080/api/items')
+      .success(function(data, status, headers, config) {
+          $scope.searchresults = data;
+          console.log(data);
+      })
+      .error(function(data, status, headers, config) {
+
+      });
+  };
+}]);
+
+
 app.controller('cAccountController', ['$scope','$http', function($scope, $http) {
   $scope.submit = function() {
     dataObj = {
