@@ -6,6 +6,8 @@ var allergy = require('./allergy');
 var ItemSchema = new Schema({
   name: {type: String},
     ingredients: {type: String}
+    upvotes: {type: Number, min:0},
+    downvotes: {type: Number, min:0},
 }, {
   strict: false
 });
