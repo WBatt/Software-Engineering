@@ -56,6 +56,9 @@ module.exports = function(app, express, passport) {
               )
                 user.password = req.body.password;
 
+              if (req.body.friends)
+                  user.friends.push(req.body.friends);//add to friends
+
               if (
                 req.body.allergic_to_milk //upate allergy to milk
               )
@@ -170,6 +173,7 @@ module.exports = function(app, express, passport) {
         if (req.body.name) user.name = req.body.name;
         if (req.body.username) user.username = req.body.username;
         if (req.body.password) user.password = req.body.password;
+        if (req.body.friends) user.friends.push(req.body.friends);
         //save the user
         user.token_expiration = new Date();
         user.save(function(err) {
