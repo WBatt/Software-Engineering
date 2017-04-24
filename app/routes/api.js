@@ -434,6 +434,18 @@ module.exports = function(app, express, passport) {
       res.json({ message: "Nothing to be queried" });
     }
   });
+
+
+  // Get User Object
+  apiRouter.post('/getUserInfo', auth, function(req, res){
+  	Users.findOne({username: req.body.username}, function(err, user){
+		if(err){
+			res.json(err)
+		} else {
+			res.json(user)
+		}
+	})
+  })
   return apiRouter;
 };
 
