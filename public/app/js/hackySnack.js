@@ -14,8 +14,7 @@ var app = angular.module('mainApp', ['ngRoute']);
   })
 
   .when('/createAccount', {
-    templateUrl : 'views/createAccount.html',
-    controller  : 'cAccountController'
+    templateUrl : 'views/createAccount.html'
   })
 
   .otherwise({redirectTo: '/'});
