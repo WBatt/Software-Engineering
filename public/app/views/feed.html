@@ -60,7 +60,7 @@
 
   <!--The search results section -->
   <div ng-show="searchFlag">
-    <div class="container"  ng-repeat="results in searchresults">
+    <div class="container items"  ng-repeat="results in searchresults">
       <a ng-click="getItem(results)">
         <img src="/images/blank-profile140.png" class="img-thumbnail rounded col-xs-2 col-md-2" alt="user profile">
         <p>{{results.fields.item_name}}</p>
