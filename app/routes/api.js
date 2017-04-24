@@ -433,7 +433,7 @@ module.exports = function(app, express, passport) {
 
 
   // Get User Object
-  apiRouter.get('/getUserInfo', auth, function(req, res){
+  apiRouter.post('/getUserInfo', auth, function(req, res){
   	Users.findOne({username: req.body.username}, function(err, user){
 		if(err){
 			res.json(err)

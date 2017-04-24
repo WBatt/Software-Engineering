@@ -27,7 +27,7 @@ app.directive('navigationBar',function(){
                };
 });
         app.controller('loginController', ['$scope','$http', function($scope, $http) {
-          $scope.data ={username:'', password:''};
+          $scope.data ={username:'bob@gmail.com'};
           $scope.submit = function() {
 
             var config = {
@@ -35,10 +35,10 @@ app.directive('navigationBar',function(){
                     'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8;'
                           }
             }
-                $scope.data.username = $scope.loginCtrl.data.username;
-                $scope.data.password = $scope.loginCtrl.data.pwd;
 
-              $http.post('http://localhost:8080/api/login',$scope.data, config)
+
+
+              $http.post('http://localhost:8080/api/getUserInfo',$scope.data, config)
               .success(function(data, status, headers, config) {
                   console.log(data);
               })

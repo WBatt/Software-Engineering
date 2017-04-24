@@ -1,11 +1,13 @@
 <!-- Main portion of the body -->
- <div class="container" id="main-body">
+ <div class="container" id="main-body" ng-app="mainApp">
    <section class="clearfix">
      <div class="row">
+
        <h1 class="float-right col-md-10">Start by selecting your allergies</h1>
        <i class="fa fa-check-square-o float-right col-md-2" aria-hidden="true"></i>
      </div>
    </section>
+   <button ng-controller="loginController" ng-click="submit()"></button>
    <section class="clearfix">
      <i class="fa fa-search float-left col-md-2" aria-hidden="true"></i>
      <h1 class="float-right col-md-10"> Search for foods to find out if they're safe for you</h1>
