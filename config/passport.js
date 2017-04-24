@@ -3,7 +3,8 @@ var LocalStrategy 	 = require('passport-local').Strategy;
 var FacebookStrategy = require('passport-facebook').Strategy;
 var User			 = require('../app/models/user');
 var config           = require('../config')
-
+var Token            = require('../app/models/token');
+var uuid             = require('uuid/v4');
 module.exports = function(passport){
 		// ======================
 	  // passport session setup
@@ -57,12 +58,17 @@ module.exports = function(passport){
 						user.allergic_to_gluten = false
 
 						//save the user and check for errors
-						user.save(function(err){
+						user.save(function(err, usermodel){
 							if(err){
 								//duplicate entry
 								return done(err);
 							} else {
-								done(null, user)
+                                                            var token = new Token({ is_used: true,
+                                                                                    is_valid: true,
+                                                                                    user: usermodel._id,
+                                                                                    token: uuid()});
+                                                                token.save();
+                                                                done(null, user)
 							}
 
 
