@@ -1,9 +1,11 @@
+var mongoose = require("mongoose");
 var User = require("../models/user");
 var Item = require("../models/item");
 var Allergy = require("../models/allergy");
 var config = require("../../config");
 var request = require("request");
 var Recipe = require("../models/recipe");
+
 
 module.exports = function(app, express, passport) {
   //get an instance of the express router
@@ -221,25 +223,25 @@ module.exports = function(app, express, passport) {
   });
 
   //get all items
-  apiRouter.get("/items", function(req, res) {
+  /*apiRouter.get("/items", function(req, res) {
     console.log("hello");
     Item.find({}, function(err, items) {
       if (err) return res.json({ err: err });
       else res.json(items);
     });
   });
-
+*/
   //get the item by name
   //accessed at GET http://localhost:8080/api/items/:name)
 
   apiRouter.get("/items", function(req, res) {
     if (req.query.name) {
-      Item.find({ name: req.query.name }, function(err, item) {
+      Item.find({ $and: [ { $or: [ { "fields.item_name": new RegExp(req.query.name,'i') }, { "name": new RegExp(req.query.name,'i')}, { "fields.brand_name": new RegExp(req.query.name,'i')} ] } ] }, function(err, item) {
         if (item.length != 0) {
           if (err) res.json({ err: err });
           else {
             //return the item
-
+            console.log("PREVIOUS ITEM FOUNd");
             res.json(item);
           }
         } else {
@@ -263,20 +265,35 @@ module.exports = function(app, express, passport) {
               query: req.query.name
             }
           };
+          var itemResults = [];
           request(options, function(error, response, body) {
             if (error) throw new Error(error);
             var items = JSON.parse(body);
             items.hits.forEach(function(i) {
-              //filterAllergies(i);
+
               var item = new Item(i);
-              item.ingredients = i.fields.nf_ingredient_statement;
+                item.ingredients = i.fields.nf_ingredient_statement;
+                item.name = i.fields.item_name;
+
               if (item.ingredients != null) {
-                item.save(function(err) {
-                  console.log(err);
-                });
+                  filterAllergies(item);
+                  itemResults.push(item);
               }
             });
-            res.json(items);
+            res.json(itemResults);
+
+            Item.find({ $and: [ { $or: [ { "fields.item_name": new RegExp(req.query.name,'i') }, { "name": new RegExp(req.query.name,'i')}, { "fields.brand_name": new RegExp(req.query.name,'i')} ] } ] }, function(err, item) {
+                if (item.length != 0) {
+                    if (err) res.json({err: err});
+                    else {
+                        //return the item
+                        console.log("IN ANOTHER PREVIOS ITEM")
+                        res.json(item);
+                    }
+                } else {
+                    res.json({message: "ehh"});
+                }
+            });
           });
         }
       });
@@ -458,5 +475,55 @@ function auth(req, res, next) {
 }
 
 function filterAllergies(item) {
-  console.log(item.fields.nf_ingredient_statement);
+    item.flagCategories.all = [];
+    Allergy.find({}, function(err, allergies) {
+        allergies.forEach(function(allergyI) {
+          var regExpress = new RegExp(allergyI.name, 'i');
+            if (item.ingredients.search(regExpress) != -1) {
+
+                console.log("MATCH", allergyI.name, allergyI.category);
+                item.allChanged = true;
+                item.markModified('allChanged');
+
+                item.flagCategories.all.push(allergyI.name);
+                item.markModified('flagCategories.all');
+
+                switch (allergyI.category.toString()) {
+                    case "egg":
+                        item.flagCategories.egg.push(allergyI.name);
+                        break;
+                    case "soy":
+                        item.flagCategories.soy.push(allergyI.name);
+                        break;
+                    case "shellfish":
+                        item.flagCategories.shellfish.push(allergyI.name);
+                        break;
+                    case "peanuts":
+                        item.flagCategories.peanuts.push(allergyI.name);
+                        break;
+                    case "milk":
+                        item.flagCategories.milk.push(allergyI.name);
+                        break;
+                    case "wheat":
+                        item.flagCategories.wheat.push(allergyI.name);
+                        break;
+                    case "other":
+                        item.flagCategories.other.push(allergyI.name);
+                        break;
+                    case "fish":
+                        item.flagCategories.fish.push(allergyI.name);
+                        break;
+                    case "meat":
+                        item.flagCategories.meat.push(allergyI.name);
+                        break;
+                    case "gluten":
+                        item.flagCategories.gluten.push(allergyI.name);
+                        break;
+                }
+            }
+        });
+        item.save(function(err) {
+            console.log(err);
+        });
+    });
 }
