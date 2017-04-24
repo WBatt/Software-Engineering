@@ -29,6 +29,21 @@ section {
   padding-bottom: 15px;
 }
 
+.items {
+  color: #ffffff;
+  -webkit-border-radius: 15px;
+	-moz-border-radius: 15px;
+  border-radius: 15px;
+  background-color: #316589;
+  margin-top:20px;
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+
+.items a{
+  color: #ffffff;
+}
+
 input[type=checkbox] {
   /* Double-sized Checkboxes */
   -ms-transform: scale(2); /* IE */
@@ -36,6 +51,10 @@ input[type=checkbox] {
   -webkit-transform: scale(2); /* Safari and Chrome */
   -o-transform: scale(2); /* Opera */
   padding: 10px;
+}
+
+input[type=text] {
+  color: #000000;
 }
 
 .checkbox-list {

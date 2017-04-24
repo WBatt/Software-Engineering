@@ -50,6 +50,10 @@ app.directive('navigationBar',function(){
 
 app.controller('searchController', ['$scope','$http', function($scope, $http) {
     $scope.searchresults;
+    $scope.searchFlag = false;
+    $scope.itemFlag = false;
+    $scope.bodyFlag = true;
+      $scope.item;
   $scope.search = function() {
 
 
@@ -58,11 +62,21 @@ app.controller('searchController', ['$scope','$http', function($scope, $http) {
       $http.get('http://localhost:8080/api/items')
       .success(function(data, status, headers, config) {
           $scope.searchresults = data;
+          $scope.searchFlag = true;
+          $scope.bodyFlag = false;
           console.log(data);
       })
       .error(function(data, status, headers, config) {
 
       });
+  };
+
+  $scope.getItem = function(itemInfo) {
+    $scope.item = itemInfo;
+    $scope.searchFlag = false;
+    $scope.itemFlag = true;
+    $scope.bodyFlag = false;
+    console.log($scope.item);
   };
 }]);
 

@@ -42,6 +42,10 @@ module.exports = function(app, express, passport) {
 		res.sendFile(path.join(__dirname, '../../public/app/views', 'search-result.html'));
 	});
 
+  app.get('/item',function(req,res){
+		res.sendFile(path.join(__dirname, '../../public/app/views', 'item.html'));
+	});
+
   // facebook route
   app.get(
     "/auth/facebook",

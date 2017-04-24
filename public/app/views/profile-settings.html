@@ -51,8 +51,11 @@
   <div class="container" id="main-body">
     <!-- ng-repeat user friend data -->
     <img src="/images/blank-profile140.png" class="img-thumbnail rounded col-xs-2 col-md-2" alt="user profile">
-    <div class="container col-md-push-4 col-md-4 col-sm-push-1 col-sm-10" id="login-form">
+    <div class="container col-md-push-4 col-md-4 col-sm-push-1 col-sm-10">
       <form ng-submit="submit()">
+        <div class="form-group">
+          <input type="text" class="form-control" placeholder="New name">
+        </div>
         <div class="form-group checkbox-list">
           <label class="col-sm-6 col-sm-push-1">
             <input type="checkbox"> Gluten
@@ -69,7 +72,7 @@
         </div>
         <div class="form-group">
           <div class="col-xs-offset-4 col-xs-4">
-            <button type="submit" class="btn btn-primary btn-lg">Get Started</button>
+            <button type="submit" class="btn btn-primary btn-lg">Save Changes</button>
           </div>
         </div>
         </form>
