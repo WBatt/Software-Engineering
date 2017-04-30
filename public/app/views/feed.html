@@ -35,7 +35,7 @@
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
           <ul class="nav navbar-nav">
-            <li class="active"><a href="dashboard.html">Home <span class="sr-only">(current)</span></a></li>
+            <li class="active"><a href="/feed">Home <span class="sr-only">(current)</span></a></li>
           </ul>
           <ul class="nav navbar-nav navbar-right">
             <li><a class="fa fa-user-o" aria-hidden="true" href="#"></a></li>
@@ -52,19 +52,20 @@
       </div><!-- /.container -->
     </nav>
     <!-- Main portion of the body -->
-  <div ng-show="bodyFlag" class="container" id="main-body" >
+  <div ng-show="bodyFlag" class="container friend-post">
     <!-- ng-repeat user friend data -->
-    <img src="/images/blank-profile140.png" class="img-thumbnail rounded col-xs-2 col-md-2" alt="user profile">
-    <p class="col-xs-10 col-md-10">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+    <img src="/images/blank-profile140.png" class="img-thumbnail rounded col-xs-1 col-md-1" alt="user profile">
+    <h3 class="col-xs-11 col-md-11">Name</h3>
+    <p class="col-xs-12 col-md-12">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
   </div> <!-- End main portion of body -->
 
   <!--The search results section -->
   <div ng-show="searchFlag">
-    <div class="container items"  ng-repeat="results in searchresults">
+    <div class="container items" ng-repeat="results in searchresults">
       <a ng-click="getItem(results)">
-        <img src="/images/blank-profile140.png" class="img-thumbnail rounded col-xs-2 col-md-2" alt="user profile">
-        <p>{{results.fields.item_name}}</p>
-        <p>{{results.fields.brand_name}}</p>
+        <img src="/images/blank-profile140.png" class="img-thumbnail rounded col-xs-1 col-md-1" alt="user profile">
+        <h1>{{results.fields.brand_name}}</h1>
+        <h3>{{results.fields.item_name}}</h3>
       </a>
     </div>
   </div>
@@ -72,10 +73,11 @@
 
   <!-- The item details section -->
   <div ng-show="itemFlag">
-    <div class="container">
-      <img src="/images/blank-profile140.png" class="img-thumbnail rounded col-xs-2 col-md-2" alt="user profile">
-      <p>{{item.fields.item_name}}</p>
-      <p>{{item.fields.brand_name}}</p>
+    <div class="container items">
+      <button class="btn btn-danger pull-right" ng-click="closeItem()">X</button>
+      <img src="/images/blank-profile140.png" class="img-thumbnail rounded col-xs-1 col-md-1" alt="user profile">
+      <h1>{{item.fields.brand_name}}</h1>
+      <h3>{{item.fields.item_name}}</h3>
       <p>{{item.fields.nf_ingredient_statement}}</p>
     </div>
   </div>

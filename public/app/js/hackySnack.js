@@ -78,6 +78,12 @@ app.controller('searchController', ['$scope','$http', function($scope, $http) {
     $scope.bodyFlag = false;
     console.log($scope.item);
   };
+
+  $scope.closeItem = function() {
+    $scope.searchFlag = true;
+    $scope.itemFlag = false;
+    $scope.bodyFlag = false;
+  };
 }]);
 
 

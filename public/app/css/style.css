@@ -44,6 +44,37 @@ section {
   color: #ffffff;
 }
 
+.items img {
+  margin-right: 20px;
+  min-width: 150px;
+}
+
+.friend-post {
+  color: #ffffff;
+  -webkit-border-radius: 15px;
+	-moz-border-radius: 15px;
+  border-radius: 15px;
+  background-color: #316589;
+  margin-top:20px;
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+
+.settings {
+  color: #ffffff;
+  -webkit-border-radius: 15px;
+	-moz-border-radius: 15px;
+  border-radius: 15px;
+  background-color: #316589;
+  margin-top:20px;
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+
+.settings a {
+  color: #FFB656;
+}
+
 input[type=checkbox] {
   /* Double-sized Checkboxes */
   -ms-transform: scale(2); /* IE */

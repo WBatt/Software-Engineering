@@ -35,7 +35,7 @@
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
           <ul class="nav navbar-nav">
-            <li class="active"><a href="dashboard.html">Home <span class="sr-only">(current)</span></a></li>
+            <li class="active"><a href="/feed">Home <span class="sr-only">(current)</span></a></li>
           </ul>
           <ul class="nav navbar-nav navbar-right">
             <li><a class="fa fa-user-o" aria-hidden="true" href="#"></a></li>
@@ -52,32 +52,37 @@
       </div><!-- /.container -->
     </nav>
     <!-- Main portion of the body -->
-  <div class="container" id="main-body" ng-app="mainApp" ng-controller="editAccountController">
+  <div class="container settings" ng-app="mainApp" ng-controller="editAccountController">
     <!-- ng-repeat user friend data -->
-    <img src="/images/blank-profile140.png" class="img-thumbnail rounded col-xs-2 col-md-2" alt="user profile">
-    <div class="container col-md-push-4 col-md-4 col-sm-push-1 col-sm-10">
-      <form >
-        <div class="form-group">
-          <input type="text" class="form-control" ng-model="nameChange" placeholder="New name">
-        </div>
+    <img src="/images/blank-profile140.png" class="img-thumbnail rounded col-xs-3 col-md-3" alt="user profile">
+    <div class="container col-md-9 col-sm-9">
+      <form>
         <div class="form-group checkbox-list">
-          <label class="col-sm-6 col-sm-push-1">
+          <h1 class="col-sm-12 text-center">Update Allergies</h1>
+          <label class="col-sm-6 col-sm-push-2">
             <input type="checkbox"> Gluten
           </label>
-          <label class="col-sm-6 col-sm-push-1">
+          <label class="col-sm-6 col-sm-push-2">
             <input type="checkbox"> Milk
           </label>
-          <label class="col-sm-6 col-sm-push-1">
+          <label class="col-sm-6 col-sm-push-2">
             <input type="checkbox"> Wheat
           </label>
-          <label class="col-sm-6 col-sm-push-1">
+          <label class="col-sm-6 col-sm-push-2">
             <input type="checkbox"> Shellfish
           </label>
         </div>
-        <div class="form-group">
-          <div class="col-xs-offset-4 col-xs-4">
-            <button type="submit"  ng-click="submit()" class="btn btn-primary btn-lg">Save Changes</button>
-          </div>
+      </form>
+    </div>
+    <div class="container col-md-12 col-sm-12">
+      <form >
+        <div class="col-sm-6">
+          <label class="col-sm-12">Username: </label>
+          <label class="col-sm-12">Email: </label>
+          <a class="col-sm-12" href="#">Change Password</a>
+        </div>
+        <div class="form-group col-sm-12">
+          <button type="submit"  ng-click="submit()" class="btn btn-primary btn-lg push-right">Save Changes</button>
         </div>
         </form>
       </div> <!--End the form div -->
