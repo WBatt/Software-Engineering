@@ -388,7 +388,10 @@
 	  </p>
 	  
 	</section> 
-	  <p>Ingredients</p>
+	<h3>Allergins</h3>
+	       <p ng-repeat="(allergen, items) in item.flagCategories">
+		   <span>{{allergen}} - </span> <span ng-repeat="item in items">{{item}} </span>
+	  <h3>Ingredients</h3>
       <p>{{item.fields.nf_ingredient_statement}}</p>
     </div>
   </div>
