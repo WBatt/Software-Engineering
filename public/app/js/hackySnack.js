@@ -17,8 +17,14 @@ var app = angular.module('mainApp', ['ngRoute']);
     templateUrl : 'views/createAccount.html'
   })
 
+  .when('/feed', {
+    templateUrl : 'views/feed.html'
+  })
+
   .otherwise({redirectTo: '/'});
 });
+
+
 
 app.directive('navigationBar',function(){
         return {
@@ -59,7 +65,7 @@ app.controller('searchController', ['$scope','$http', function($scope, $http) {
 
 
 
-      $http.get('http://localhost:8080/api/items')
+      $http.get('http://localhost:8080/api/items?name='+$scope.name)
       .success(function(data, status, headers, config) {
           $scope.searchresults = data;
           $scope.searchFlag = true;
@@ -111,5 +117,37 @@ app.controller('cAccountController', ['$scope','$http', function($scope, $http) 
 }]);
 
 app.controller('mainController', ['$scope','$http', function($scope, $http) {
+
+}]);
+
+app.controller('authController', ['$scope','$http',function($scope, $http) {
+  $scope.loggedIn;
+  $scope.authenticate = function() {
+
+    var config = {
+
+          body : {
+            'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8;'
+                 }
+    }
+
+      $http.get('http://localhost:8080/api/auth',$scope.data, config)
+      .success(function(data, status, headers, config) {
+          console.log("user session is ");
+          console.log(data);
+          $scope.loggedIn =data.success;
+         console.log($scope.loggedIn);
+
+      })
+      .error(function(data, status, headers, config) {
+          console.log("user session is ");
+          console.log(data);
+         $scope.loggedIn=data.success;
+          console.log($scope.loggedIn);
+
+      });
+  };
+
+
 
 }]);
