@@ -4,6 +4,8 @@ var Allergy = require("../models/allergy");
 var config = require("../../config");
 var request = require("request");
 var Recipe = require("../models/recipe");
+var Email = require("../email/email");
+
 
 module.exports = function(app, express, passport) {
   //get an instance of the express router
