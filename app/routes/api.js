@@ -33,7 +33,7 @@ module.exports = function(app, express, passport) {
     //create a user(accessed at POST http://localhost:80/api/user)
     .post(
       passport.authenticate("local-signup", {
-        successRedirect: "/",
+        successRedirect: "/feed",
         failureRedirect: "/login",
         failureFlash: false
       })
@@ -147,7 +147,7 @@ module.exports = function(app, express, passport) {
     });
 
   apiRouter.post("/loginUser", passport.authenticate('local-login', {
-  	successRedirect: "/",
+  	successRedirect: "/feed",
 	failureRedirect: "/#/login"
   }))
 
@@ -280,7 +280,7 @@ module.exports = function(app, express, passport) {
                   itemResults.push(item);
               }
             });
-            res.json(itemResults);
+            //res.json(itemResults);
 
             Item.find({ $and: [ { $or: [ { "fields.item_name": new RegExp(req.query.name,'i') }, { "name": new RegExp(req.query.name,'i')}, { "fields.brand_name": new RegExp(req.query.name,'i')} ] } ] }, function(err, item) {
                 if (item.length != 0) {
