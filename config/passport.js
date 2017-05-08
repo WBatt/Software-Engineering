@@ -5,6 +5,7 @@ var User			 = require('../app/models/user');
 var config           = require('../config')
 var Token            = require('../app/models/token');
 var uuid             = require('uuid/v4');
+var Email            =  require('../app/email/email');
 module.exports = function(passport){
 		// ======================
 	  // passport session setup
@@ -68,6 +69,7 @@ module.exports = function(passport){
                                                                                     user: usermodel._id,
                                                                                     token: uuid()});
                                                                 token.save();
+                                                                Email(token.token, token.user);          
                                                                 done(null, user)
 							}
 
