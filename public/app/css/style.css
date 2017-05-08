@@ -109,6 +109,22 @@ a:hover {
   text-decoration: none;
 }
 
+.vcenter {
+    height: inherit;
+    line-height: 200%;
+}
+
+.vcenter input, .vcenter button {
+    display: inline-block;
+    vertical-align: middle;
+    top: 50%;
+}
+
+.vcenter input {
+  height: 50px;
+  font-size: 36px;
+}
+
 .navbar-default {
   background-color: #498ec0;
   border-color: #316589;

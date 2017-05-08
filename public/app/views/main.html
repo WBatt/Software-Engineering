@@ -1,29 +1,33 @@
 <!-- Main portion of the body -->
  <div class="container" id="main-body" ng-app="mainApp">
-   <!-- Carousel
-    ================================================== -->
-    <div id="foodCarousel" class="carousel slide carousel-fade col-md-6" data-ride="carousel">
-      <!-- Indicators -->
-      <ol class="carousel-indicators">
-        <li data-target="#foodCarousel" data-slide-to="0" class="active"></li>
-        <li data-target="#foodCarousel" data-slide-to="1"></li>
-        <li data-target="#foodCarousel" data-slide-to="2"></li>
-      </ol>
-      <div class="carousel-inner">
-        <div class="item active">
-          <img class="img-responsive" src="/images/lobster.svg" alt="Lobster">
+   <div class="row">
+     <!-- Carousel
+      ================================================== -->
+      <div id="foodCarousel" class="carousel slide carousel-fade col-md-6" data-ride="carousel">
+        <!-- Indicators -->
+        <ol class="carousel-indicators">
+          <li data-target="#foodCarousel" data-slide-to="0" class="active"></li>
+          <li data-target="#foodCarousel" data-slide-to="1"></li>
+          <li data-target="#foodCarousel" data-slide-to="2"></li>
+        </ol>
+        <!-- SVG images in carousel -->
+        <div class="carousel-inner">
+          <div class="item active">
+            <img class="img-responsive" src="/images/Lobster.svg" alt="Lobster">
+          </div>
+          <div class="item">
+            <img class="img-responsive" src="images/Beer.svg" alt="Beer">
+          </div>
+          <div class="item">
+            <img class="img-responsive" src="images/Cheese.svg" alt="Cheese">
+          </div>
         </div>
-        <div class="item">
-          <img class="img-responsive" src="images/beer.svg" alt="Beer">
-        </div>
-        <div class="item">
-          <img class="img-responsive" src="images/lobster.svg" alt="Lobster">
-        </div>
-      </div>
-    </div><!-- /.carousel -->
+      </div><!-- /.carousel -->
 
-    <div class="col-md-6">
-      <input type="text"  class="form-control" id="email" placeholder="">
-      <button type="Search" class="btn btn-primary">Search</button>
+      <div class="col-md-6 vcenter">
+
+        <input type="text" class="form-control" placeholder="">
+        <button type="Search" class="btn btn-primary">Search</button>
+      </div>
     </div>
  </div><!-- End main portion of body -->
