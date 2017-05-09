@@ -46,6 +46,7 @@ section {
 
 .items img {
   margin-right: 20px;
+  margin-left: 5px;
   min-width: 150px;
 }
 
@@ -109,20 +110,25 @@ a:hover {
   text-decoration: none;
 }
 
-.vcenter {
-    height: inherit;
-    line-height: 200%;
+.items .row img {
+  margin-left: 20px;
 }
 
-.vcenter input, .vcenter button {
-    display: inline-block;
-    vertical-align: middle;
-    top: 50%;
+.items .row button {
+  margin-right: 20px;
 }
 
-.vcenter input {
-  height: 50px;
-  font-size: 36px;
+.vertical-center {
+  min-height: 100%;  /* Fallback for browsers do NOT support vh unit */
+  min-height: 100vh; /* These two lines are counted as one :-)       */
+
+  display: flex;
+  align-items: center;
+}
+
+.vertical-center input {
+  height: 150px;
+  font-size: 100px;
 }
 
 .navbar-default {
