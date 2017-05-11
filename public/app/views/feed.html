@@ -166,7 +166,7 @@
 
   <!--The search results section -->
   <div ng-show="searchFlag">
-    <div class="container items" ng-repeat="results in searchresults">
+    <div class="container items cursor-hand" ng-repeat="results in searchresults">
       <a ng-click="getItem(results)">
         <img src="/images/blank-profile140.png" class="img-thumbnail rounded col-xs-1 col-md-1" alt="user profile">
         <h1>{{results.fields.brand_name}}</h1>
