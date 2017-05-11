@@ -1,7 +1,7 @@
 var nodemailer = require('nodemailer');
 var fs=require('fs');
-module.exports = function() {
-	fs.readFile('./welcome2.html', function(err, html){
+module.exports = function(email) {
+	fs.readFile('./app/email/welcome2.html', function(err, html){
 		if(err) throw err;
 		var transporter = nodemailer.createTransport({
   		service: "Gmail",
@@ -14,7 +14,7 @@ module.exports = function() {
 
 		var mailOptions = {
   		from: 'HackySnack Team <hackysnackteam@gmail.com>', 
-  		to: 'Hackysnackteam@gmail.com',
+  		to: email,
   		subject: 'Welcome', 
   	  	html: html
 	    }

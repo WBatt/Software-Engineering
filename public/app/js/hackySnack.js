@@ -44,7 +44,7 @@ app.directive('navigationBar',function(){
 
 
 
-              $http.post('http://localhost:8080/api/getUserInfo',$scope.data, config)
+              $http.post('/api/getUserInfo',$scope.data, config)
               .success(function(data, status, headers, config) {
                   console.log(data);
               })
@@ -65,7 +65,7 @@ app.controller('searchController', ['$scope','$http', function($scope, $http) {
 
 
 
-      $http.get('http://localhost:8080/api/items?name='+$scope.name)
+      $http.get('/api/items?name='+$scope.name)
       .success(function(data, status, headers, config) {
           $scope.searchresults = data;
           $scope.searchFlag = true;
@@ -106,7 +106,7 @@ app.controller('cAccountController', ['$scope','$http', function($scope, $http) 
       }
     }
     console.log(dataObj);
-    $http.post('http://localhost:8080/api/users', dataObj, config)
+    $http.post('/api/users', dataObj, config)
     .success(function(data, status, headers, config) {
       console.log(data);
     })
@@ -131,7 +131,7 @@ app.controller('authController', ['$scope','$http',function($scope, $http) {
                  }
     }
 
-      $http.get('http://localhost:8080/api/auth',$scope.data, config)
+      $http.get('/api/auth',$scope.data, config)
       .success(function(data, status, headers, config) {
           console.log("user session is ");
           console.log(data);
